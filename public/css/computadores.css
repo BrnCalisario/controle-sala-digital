@@ -1,0 +1,144 @@
+:root {
+    --desk: 170px;
+    --pc: 130px
+        /* --desk-frente: calc(var(--desk) + 30px) */
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    font-family: "Segoe UI";
+}
+
+/*  Header */
+
+
+h1 {
+    margin: 0;
+    padding: 0;
+}
+
+.room-title {
+    margin-top: 50px;
+    padding-bottom: 0;
+
+}
+
+
+.sala {
+    display: inline-block;
+    /* margin-top: 50px; */
+    border: 1px solid lightgray;
+    padding: 1rem 5rem;
+    border-radius: 7px;
+}
+
+
+.frente {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.frente .mesa-frente {
+    width: 220px
+}
+
+.frente .cadeado {
+    width: 75px;
+    height: 75px;
+    margin-right: 50px;
+    border-radius: 50px;
+    border: 1px solid lightgray;
+    background-color: rgb(255, 247, 238);
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+}
+
+.cadeado:hover {
+    transform: scale(1.2);
+}
+
+.mesas {
+    display: flex;
+    /* margin: 0 auto; */
+}
+
+.esquerdo {
+    margin-right: 200px;
+}
+
+section {
+    display: flex;
+    flex-direction: column;
+}
+
+.mesa {
+    display: flex;
+}
+
+.mesa img {
+    margin: 0;
+    padding: 0;
+    width: var(--desk)
+}
+
+.mesa .pc {
+    position: absolute;
+    width: var(--pc)
+}
+
+.mesa-direita .pc {
+    margin-left: 40px;
+    margin-right: 0;
+}
+
+.add-btn {
+    position: absolute;
+    font-size: 30px;
+    color: rgba(95, 206, 95, 0.5);
+    /* -webkit-transition: 0.8s; */
+}
+
+.add-btn:hover {
+    transform: scale(1.3);
+}
+
+.mesa-esquerda .add-btn {
+    margin-top: 15px;
+    margin-left: 55px;
+}
+
+.mesa-direita .add-btn {
+    margin-top: 15px;
+    margin-left: 82px;
+}
+
+@media (max-width: 1400px) {
+    :root {
+        --desk: 150px;
+        --pc: calc(var(--desk) - 30px)
+    }
+
+    .frente img {
+        width: 160px;
+
+    }
+
+    .Loading {
+        width: inherit;
+    }
+
+    .Loading-progress {
+        width: 92%;
+    }
+
+    /* .mesas {
+        gap: 150px;
+    } */
+
+    .mesa-direita .pc {
+        margin-left: 25px;
+    }
+}

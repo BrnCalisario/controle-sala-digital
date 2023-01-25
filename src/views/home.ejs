@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SD Maintenance Log</title>
+
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+        integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/computadores.css">
+    <link rel="stylesheet" href="css/header.css">
+</head>
+
+
+<body>
+
+    <header>
+        <a href="Computadores.html">
+            <h1>SD Maintenance Log</h1>
+        </a>
+        <a href="Relatorio.html">Relatorio</a>
+    </header>
+    <div class="Loading">
+        <div class="Loading-progress"></div>
+    </div>
+
+
+    <h1 class="room-title">Sala Digital</h1>
+    <div class="sala">
+        <div class="frente">
+            <div>
+                <img class="mesa-frente" src="img/computadores/mesa-frente.png" alt="">
+            </div>
+            <a href="login_adm.html"><img class="cadeado" src="img/cadeado.png"></a>
+        </div>
+        <div class="mesas">
+            <section class="esquerdo">
+                <% for(var i=0; i < 5; i++) { %>
+                    <div class="mesa">
+                        <div class="desk mesa-esquerda">
+                            <img src="img/computadores/mesa-esquerda.png">
+                        </div>
+                        <div class="desk mesa-direita">
+                            <img src="img/computadores/mesa-direita.png">
+                        </div>
+                    </div>
+                    <% } %>
+            </section>
+            <section class="direito">
+                <% for(var i=0; i < 5; i++) { %>
+                    <div class="mesa">
+                        <div class="desk mesa-esquerda">
+                            <img src="img/computadores/mesa-esquerda.png">
+                        </div>
+                        <div class="desk mesa-direita">
+                            <img src="img/computadores/mesa-direita.png">
+                        </div>
+                    </div>
+                    <% } %>
+            </section>
+        </div>
+    </div>
+
+</body>
+
+</html>
