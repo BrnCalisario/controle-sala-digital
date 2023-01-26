@@ -23,6 +23,15 @@ class DeviceController {
             res.sendStatus(400)
         }
     }
+
+    async getByPC(req, res) {
+        const query = await device.findAll({
+            where: { Computador: req.params.pc },
+            raw: true
+        })
+
+        res.json(query)
+    }
 }
 
 export default new DeviceController()
