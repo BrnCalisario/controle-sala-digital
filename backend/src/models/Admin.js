@@ -1,7 +1,7 @@
 import Sequelize from 'sequelize'
 import database  from '../database/connection.js'
 
-const admin = database.define("admin", {
+const admin = database.define("Admin", {
     ID: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
@@ -11,8 +11,9 @@ const admin = database.define("admin", {
     Login: {
         type: Sequelize.STRING(25),
         allowNull: false,
+        unique: true,
     },
-    Senha: {
+    Password: {
         type: Sequelize.STRING(25),
         allowNull: false
     }

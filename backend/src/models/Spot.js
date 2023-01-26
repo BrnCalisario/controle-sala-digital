@@ -1,12 +1,13 @@
 import Sequelize from 'sequelize'
 import database from '../database/connection.js'
 
-const spot = database.define("Lugar", {
-    Posicao: {
+const spot = database.define("Spot", {
+    Position: {
         type: Sequelize.INTEGER,
-        primaryKey: true
+        primaryKey: true,
+        unique: true,
     },
-    Ocupado: {
+    Reserved: {
         type: Sequelize.BOOLEAN,
         defaultValue: false
     }

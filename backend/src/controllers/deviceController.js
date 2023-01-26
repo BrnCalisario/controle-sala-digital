@@ -9,24 +9,24 @@ class DeviceController {
 
     async create(req, res) {
         try {
-            const fk = req.body.Computador
+            const fk = req.body.Computer
             const pc = await computer.findOne({
-                where: { Nome: fk}
+                where: { Name: fk}
             })
             
             if (pc === null)
-                throw new Error("Computador não existe")
+                throw new Error()
             
             device.create(req.body)
-            res.sendStatus(200)
+            return res.sendStatus(200)
         } catch (e) {
-            res.sendStatus(400)
+            return res.sendStatus(400)
         }
     }
 
     async getByPC(req, res) {
         const query = await device.findAll({
-            where: { Computador: req.params.pc },
+            where: { Computer: req.params.pc },
             raw: true
         })
 

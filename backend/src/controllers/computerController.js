@@ -1,5 +1,6 @@
 import computer from '../models/Computer.js'
 import spot from '../models/Spot.js'
+import device from '../models/Device.js'
 
 class computerController {
     async getAll(req, res) {
@@ -9,44 +10,56 @@ class computerController {
 
     async create(req, res) {
         try {
-            const pos = req.body.Posicao
+            const pos = req.body.Position
             computer.create(req.body)
             spot.update(
-                { Ocupado: true },
-                { where: { Posicao: pos } }
+                { Reserved: true },
+                { where: { Position: pos } }
             )
-            return res.status(200).json(e)
+            return res.sendStatus(200)
         } catch (e) {
-            console.log(e)
-            return res.status(400).json(e)
+            return res.sendStatus(400)
         }
     }
 
     async remove(req, res) {
-        const pos = req.body.Posicao
+        const pos = req.body.Position
 
         computer.destroy({
-            where: { Nome: req.body.Nome }
+            where: { Name: req.body.Name }
         })
 
         spot.update(
-            { Ocupado: false },
-            { where: { Posicao: pos } }
+            { Reserved: false },
+            { where: { Position: pos } }
         )
     }
 
     async getByPos(req, res) {
         const pc = await computer.findOne({
-            where: { Posicao: req.body.pos }
+            where: { Position: req.body.pos }
         })
 
-        if(pc === null)
-        {
-            res.sendStatus(400)
-            return
-        }
-        
+        if (pc === null)
+            return res.sendStatus(404)
+
         res.json(pc)
+    }
+
+    async getAllDevices(req, res) {
+        const pc = await computer.findOne({
+            where: { Position: req.body.pos }
+        })
+
+        if (pc === null)
+            return res.sendStatus(404)
+
+        const queryDevices = await device.findAll({
+            where: { Computer: pc.Name }
+        })
+
+        const result = { computer: pc, devices: queryDevices }
+        res.json(result)
     }
 }
 

@@ -1,26 +1,27 @@
 import Sequelize from 'sequelize'
 import database  from '../database/connection.js'
 
-const user = database.define("Usuario", {
+const user = database.define("User", {
     EDV: {
         type: Sequelize.STRING(8),
         primaryKey: true,
     },
-    Nome_Completo: {
+    Full_Name: {
         type: Sequelize.STRING(60),
         allowNull: false
     },
-    Cargo: {
+    Role: {
         type: Sequelize.STRING(30),
         allowNull: false
     },
-    Turno: {
+    Shift: {
         type: Sequelize.STRING(10),
         allowNull: true
     },
     CPF: {
         type: Sequelize.STRING(11),
-        allowNull: false
+        allowNull: false,
+        unique: true
     }
 })
 
