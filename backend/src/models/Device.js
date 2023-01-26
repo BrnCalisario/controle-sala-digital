@@ -1,8 +1,8 @@
 import Sequelize from 'sequelize'
-import { connection as database } from '../database/connection'
-import computador from './computador'
+import database  from '../database/connection.js'
+import computer from './Computer.js'
 
-const periferico = database.define("Periferico", {
+const device = database.define("Periferico", {
     ID: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
@@ -23,6 +23,6 @@ const periferico = database.define("Periferico", {
     }
 })
 
-computador.hasMany(periferico, {foreignKey: {name: 'Computador'}})
+computer.hasMany(device, {foreignKey: {name: 'Computador'}})
 
-export default periferico
+export default device

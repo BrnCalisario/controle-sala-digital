@@ -1,6 +1,8 @@
 import express, { json, urlencoded } from 'express'
 
 import userRoutes from './src/routes/userRoutes.js'
+import spotRoutes from './src/routes/spotRoutes.js'
+import computerRoutes from './src/routes/computerRoutes.js'
 
 class App {
     constructor() {
@@ -16,6 +18,8 @@ class App {
 
     routes() {
         this.app.use('/user', userRoutes)
+        this.app.use('/spot', spotRoutes)
+        this.app.use('/computer', computerRoutes)
     }
 }
 

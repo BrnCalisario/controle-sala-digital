@@ -39,7 +39,7 @@
 
         <div class="mesas">
             <section class="esquerdo">
-                <% for(var i=0; i < 5; i++) { %>
+                <% for(var i=0; i < 10; i+=2) { %>
                     <div class="mesa">
                         <div class="desk mesa-esquerda">
                             <% if(posicoes[i] && i < posicoes.length) { %>
@@ -57,7 +57,7 @@
                     <% } %>
             </section>
             <section class="direito">
-                <% for(var i=6; i < 11; i++) { %>
+                <% for(var i=10; i < 20; i+=2) { %>
                     <div class="mesa">
                         <div class="desk mesa-esquerda">
                             <% if(posicoes[i] && i < posicoes.length) { %>

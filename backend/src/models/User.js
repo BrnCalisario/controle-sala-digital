@@ -1,7 +1,7 @@
 import Sequelize from 'sequelize'
-import connection  from '../database/connection.js'
+import database  from '../database/connection.js'
 
-const usuario = connection.define("Usuario", {
+const user = database.define("Usuario", {
     EDV: {
         type: Sequelize.STRING(8),
         primaryKey: true,
@@ -24,4 +24,4 @@ const usuario = connection.define("Usuario", {
     }
 })
 
-export default usuario
+export default user

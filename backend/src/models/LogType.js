@@ -1,7 +1,7 @@
-const Sequelize = require("sequelize")
-const database = require("../config/db")
+import Sequelize from 'sequelize'
+import database  from '../database/connection.js'
 
-const tipoRelatorio = database.define("tipoRelatorio", {
+const logType = database.define("tipoRelatorio", {
     ID: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
@@ -15,4 +15,4 @@ const tipoRelatorio = database.define("tipoRelatorio", {
 })
 
 
-module.exports = tipoRelatorio
+export default logType

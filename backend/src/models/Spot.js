@@ -1,7 +1,7 @@
-const Sequelize = require("sequelize")
-const database = require("../config/db")
+import Sequelize from 'sequelize'
+import database from '../database/connection.js'
 
-const sala = database.define("Sala", {
+const spot = database.define("Lugar", {
     Posicao: {
         type: Sequelize.INTEGER,
         primaryKey: true
@@ -12,4 +12,4 @@ const sala = database.define("Sala", {
     }
 })
 
-module.exports = sala
+export default spot

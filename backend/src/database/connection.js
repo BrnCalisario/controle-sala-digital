@@ -3,7 +3,7 @@ import dotenv from 'dotenv'
 dotenv.config()
 import Sequelize from "sequelize"
 
-const connection = new Sequelize(
+const database = new Sequelize(
     process.env.DATABASE,
     process.env.DATABASE_USERNAME,
     process.env.DATABASE_PASSWORD,
@@ -14,6 +14,6 @@ const connection = new Sequelize(
     }    
 )
 
-connection.sync()
+database.sync()
 
-export default connection;
+export default database;

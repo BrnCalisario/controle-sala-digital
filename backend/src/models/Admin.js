@@ -1,13 +1,13 @@
-const Sequelize = require("sequelize")
-const database = require("../config/db")
+import Sequelize from 'sequelize'
+import database  from '../database/connection.js'
 
-const adm = database.define("adm", {
+const admin = database.define("admin", {
     ID: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
         allowNull: false,
         primaryKey: true
-    },  
+    },
     Login: {
         type: Sequelize.STRING(25),
         allowNull: false,
@@ -18,4 +18,4 @@ const adm = database.define("adm", {
     }
 })
 
-module.exports = adm
+export default admin
