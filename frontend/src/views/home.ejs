@@ -2,9 +2,9 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SD Maintenance Log</title>
 
     <!-- FontAwesome -->
@@ -13,13 +13,11 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- CSS -->
-    <link rel="stylesheet" href="css/computadores.css">
-    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/computadores.css" />
+    <link rel="stylesheet" href="css/header.css" />
 </head>
 
-
 <body>
-
     <header>
         <a href="Computadores.html">
             <h1>SD Maintenance Log</h1>
@@ -30,43 +28,54 @@
         <div class="Loading-progress"></div>
     </div>
 
-
     <h1 class="room-title">Sala Digital</h1>
     <div class="sala">
         <div class="frente">
             <div>
-                <img class="mesa-frente" src="img/computadores/mesa-frente.png" alt="">
+                <img class="mesa-frente" src="img/computadores/mesa-frente.png" alt="" />
             </div>
-            <a href="login_adm.html"><img class="cadeado" src="img/cadeado.png"></a>
+            <a href="login_adm.html"><img class="cadeado" src="img/cadeado.png" /></a>
         </div>
+
         <div class="mesas">
             <section class="esquerdo">
                 <% for(var i=0; i < 5; i++) { %>
                     <div class="mesa">
                         <div class="desk mesa-esquerda">
-                            <img src="img/computadores/mesa-esquerda.png">
+                            <% if(posicoes[i] && i < posicoes.length) { %>
+                                <img class="pc" src="img/computadores/pc.png">
+                            <% } %>
+                            <img src="img/computadores/mesa-esquerda.png" />
                         </div>
                         <div class="desk mesa-direita">
-                            <img src="img/computadores/mesa-direita.png">
+                            <% if(posicoes[i + 1] && (i + 1) < posicoes.length) { %>
+                                <img class="pc" src="img/computadores/pc.png">
+                            <% } %>             
+                            <img src="img/computadores/mesa-direita.png" />      
                         </div>
                     </div>
                     <% } %>
             </section>
             <section class="direito">
-                <% for(var i=0; i < 5; i++) { %>
+                <% for(var i=6; i < 11; i++) { %>
                     <div class="mesa">
                         <div class="desk mesa-esquerda">
-                            <img src="img/computadores/mesa-esquerda.png">
+                            <% if(posicoes[i] && i < posicoes.length) { %>
+                                <img class="pc" src="img/computadores/pc.png">
+                            <% } %>
+                            <img src="img/computadores/mesa-esquerda.png" />
                         </div>
                         <div class="desk mesa-direita">
-                            <img src="img/computadores/mesa-direita.png">
+                            <% if(posicoes[i + 1] && (i + 1) < posicoes.length) { %>
+                                <img class="pc" src="img/computadores/pc.png">
+                            <% } %>             
+                            <img src="img/computadores/mesa-direita.png" />      
                         </div>
                     </div>
                     <% } %>
             </section>
         </div>
     </div>
-
 </body>
 
 </html>

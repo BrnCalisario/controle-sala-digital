@@ -1,4 +1,4 @@
-// const salas = require("../models/sala")
+const salas = require("../models/sala")
 // const computador = require("../models/computador")
 // const periferico = require("../models/periferico")
 // const usuario = require("../models/usuario")
@@ -10,6 +10,13 @@
 
 module.exports = {
     async getHome(req, res) {
-        res.render('../views/home')
+        const query = await salas.findAll({
+            raw: true,
+            attributes: ["Ocupado"]
+        })
+        
+        const pos = query.map(q => q.Ocupado)
+
+        res.render('../views/home', { posicoes: pos })
     }
 }
