@@ -5,6 +5,6 @@ import userController from "../controllers/userController.js";
 const router = new Router();
 
 router.get('/', userController.getAll)
-router.post('/', userController.insert)
+router.post('/', userController.create)
 
 export default router

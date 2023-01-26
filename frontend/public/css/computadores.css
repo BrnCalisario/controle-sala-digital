@@ -92,12 +92,13 @@ section {
 
 .mesa .pc {
     position: absolute;
-    width: var(--pc)
+    width: var(--pc);
+    cursor: pointer;
 }
 
 .mesa-direita .pc {
     margin-left: 40px;
-    margin-right: 0;
+    margin-right: 0
 }
 
 .add-btn {

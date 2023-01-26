@@ -7,13 +7,13 @@ class computerController {
         res.json(pcs)
     }
 
-    async insert(req, res) {
+    async create(req, res) {
         try {
             const pos = req.body.Posicao
             computer.create(req.body)
             spot.update(
                 { Ocupado: true },
-                { where: {Posicao: pos} } 
+                { where: { Posicao: pos } }
             )
             return res.status(200).json(e)
         } catch (e) {
@@ -31,8 +31,22 @@ class computerController {
 
         spot.update(
             { Ocupado: false },
-            { where: { Posicao: pos }}
+            { where: { Posicao: pos } }
         )
+    }
+
+    async getByPos(req, res) {
+        const pc = await computer.findOne({
+            where: { Posicao: req.body.pos }
+        })
+
+        if(pc === null)
+        {
+            res.sendStatus(400)
+            return
+        }
+        
+        res.json(pc)
     }
 }
 

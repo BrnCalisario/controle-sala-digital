@@ -6,7 +6,7 @@ class UserController {
         res.json(users)
     }  
 
-    async insert(req, res) {
+    async create(req, res) {
         try {
             user.create(req.body);
         } catch (e) {
