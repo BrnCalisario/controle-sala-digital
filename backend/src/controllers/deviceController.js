@@ -11,12 +11,12 @@ class DeviceController {
         try {
             const fk = req.body.Computer
             const pc = await computer.findOne({
-                where: { Name: fk}
+                where: { Name: fk }
             })
-            
+
             if (pc === null)
                 throw new Error()
-            
+
             device.create(req.body)
             return res.sendStatus(200)
         } catch (e) {

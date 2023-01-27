@@ -1,5 +1,5 @@
 import Sequelize from 'sequelize'
-import database  from '../database/connection.js'
+import database from '../database/connection.js'
 import spot from "./Spot.js"
 
 const computer = database.define("Computer", {
@@ -11,6 +11,6 @@ const computer = database.define("Computer", {
     },
 })
 
-spot.hasOne(computer, {foreignKey: {name: 'Posicao'}})
+spot.hasOne(computer, { foreignKey: { name: 'SpotPosition' } })
 
 export default computer

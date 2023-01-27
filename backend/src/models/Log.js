@@ -26,7 +26,7 @@ const log = database.define("Log", {
     }
 })
 
-user.hasMany(log, { foreignKey: { name: 'Usuario' } })
-device.hasMany(log, { foreignKey: { name: 'Periferico' } })
+user.hasMany(log, { foreignKey: { name: 'User' } })
+device.hasMany(log, { foreignKey: { name: 'Device' } })
 
 export default log

@@ -1,6 +1,8 @@
 import computer from '../models/Computer.js'
 import spot from '../models/Spot.js'
 import device from '../models/Device.js'
+import log from '../models/Log.js'
+
 
 class computerController {
     async getAll(req, res) {
@@ -10,7 +12,7 @@ class computerController {
 
     async create(req, res) {
         try {
-            const pos = req.body.Position
+            const pos = req.body.SpotPosition
             computer.create(req.body)
             spot.update(
                 { Reserved: true },
@@ -23,7 +25,7 @@ class computerController {
     }
 
     async remove(req, res) {
-        const pos = req.body.Position
+        const pos = req.body.SpotPosition
 
         computer.destroy({
             where: { Name: req.body.Name }
@@ -31,13 +33,13 @@ class computerController {
 
         spot.update(
             { Reserved: false },
-            { where: { Position: pos } }
+            { where: { SpotPosition: pos } }
         )
     }
 
     async getByPos(req, res) {
         const pc = await computer.findOne({
-            where: { Position: req.body.pos }
+            where: { SpotPosition: req.body.pos }
         })
 
         if (pc === null)
@@ -46,17 +48,24 @@ class computerController {
         res.json(pc)
     }
 
-    async getAllDevices(req, res) {
+    async getFullStats(req, res) {
         const pc = await computer.findOne({
-            where: { Position: req.body.pos }
+            where: { SpotPosition: req.body.pos }
         })
 
         if (pc === null)
             return res.sendStatus(404)
 
-        const queryDevices = await device.findAll({
+        var queryDevices = await device.findAll({
             where: { Computer: pc.Name }
         })
+
+        for (var d of queryDevices) {
+            const queryLogs = await log.findAll({
+                where: { Device: d.ID }
+            })
+            d.dataValues.Logs = queryLogs
+        }
 
         const result = { computer: pc, devices: queryDevices }
         res.json(result)

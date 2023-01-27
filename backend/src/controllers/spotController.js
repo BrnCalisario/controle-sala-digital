@@ -13,6 +13,8 @@ class SpotController {
                 Reserved: false                
             })
         }
+
+        res.sendStatus(200)
     }
 }
 
