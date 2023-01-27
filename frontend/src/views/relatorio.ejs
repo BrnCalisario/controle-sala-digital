@@ -29,14 +29,18 @@
 
     <h1 style="text-align: center; margin-top: 4rem;">
         DISPOSITIVO:
-        <%= computador.Nome %>
+        <%= computador.Name %>
     </h1>
     <main>
         <div class="lista">
             <h3 class="title">
                 PERIFÉRICOS DO DISPOSITIVO
             </h3>
-
+            <% for(var i = 0; i < computador.devices.length; i++) { %>
+                <div class="item">
+                    <%= computador.devices[i].Name %>
+                </div>
+            <% } %>
             <!-- <div class="item">
                 Mouse
             </div>
@@ -69,6 +73,7 @@
                     </select>
                 </form>
 
+                
                 <div class="relatorio" id="Médio">
                     <div class="esquerda_relatorio">
                         <i class="fas fa-clipboard-check" id="concluir"><span class="tooltiptext">Marcar como concluido</span></i>

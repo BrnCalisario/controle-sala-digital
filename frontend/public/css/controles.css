@@ -1,0 +1,152 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Segoe UI";
+}
+
+main {
+    width: 80%;
+    margin: 0 auto;
+    justify-content: space-between;
+    display: flex;
+}
+
+
+
+/* ----------------------------------------------------------------------- */
+.lista {
+    margin-top: 5em;
+    width: 40%;
+    padding: 2em;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+}
+
+
+.item {
+    display: flex;
+    padding: 2em;
+    border: solid 1px lightgray;
+    margin-top: 2em;
+    border-radius: 15px;
+    font-size: 20px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.title {
+    font-size: 35px;
+    margin-bottom: 2em;
+    text-align: center;
+}
+
+.info1 span
+{
+    
+    font-size: 15px;
+}
+
+.item .info2 {
+    font-size: 15px;
+}
+
+
+
+/* ----------------------------------------------------------------------- */
+.cadastrar {
+    background-color: black;
+    padding: 2em;
+    border: 1px solid lightgray;
+    margin-top: 5em;
+    width: 38%;
+    color: white;
+    border-radius: 25px;
+    height: 100%;
+}
+
+
+
+.cadastrar form {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+label
+{
+    color: lightgrey;
+    text-align: left;
+    margin-right: 42%;
+    font-size: 20px;
+}
+
+.cadastrar .transition {
+    letter-spacing: .2rem;
+    margin-left: 2em;
+    padding: 1.2em;
+    border: 2px solid black;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline: none;
+    border-radius: 10px;
+    width: 38%;
+    font-weight: 600;
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 2em;
+}
+
+.cadastrar .transition:focus {
+    border: 2px solid #4169E1;
+    background-color: rgb(224, 235, 255);
+    color: black;
+}
+
+
+.cadastrar button[type="submit"] {
+    background: linear-gradient(#000000c4, #000000c4) padding-box, linear-gradient(45deg, #6495ED, #4169E1) border-box;
+    box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+    border: 2px solid transparent;
+    padding: .6em;
+    margin-left: 1em;
+    font-size: 20px;
+    font-weight: 600;
+    border-radius: 10px;
+    width: 30%;
+    color: white;
+    margin-top: 2em;
+    margin-bottom: 1em;
+}
+
+
+.cadastrar button[type="submit"]:hover {
+    color: #000000c4;
+    -webkit-transition: 0.9s;
+    background: linear-gradient(white, white) padding-box, linear-gradient(45deg, #6495ED, #4169E1) border-box;
+    background-image: linear-gradient(45deg, #6495ED, #4169E1);
+}
+
+#excluir
+{
+    background: linear-gradient(#000000c4, #000000c4) padding-box, linear-gradient(45deg, #ed6464, #e14141) border-box;
+    box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+    border: 2px solid transparent;
+    padding: .6em;
+    margin-left: 1em;
+    font-size: 20px;
+    font-weight: 600;
+    border-radius: 10px;
+    width: 30%;
+    color: white;
+    margin-top: 2em;
+    margin-bottom: 1em;
+}
+
+
+#excluir:hover
+{
+    color: #000000c4;
+    -webkit-transition: 0.9s;
+    background: linear-gradient(white, white) padding-box, linear-gradient(45deg, #ed6464, #e14141) border-box;
+    background-image: linear-gradient(45deg, #ed6464, #e14141);
+}

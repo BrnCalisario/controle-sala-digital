@@ -50,7 +50,7 @@ class computerController {
 
     async getFullStats(req, res) {
         const pc = await computer.findOne({
-            where: { SpotPosition: req.body.pos }
+            where: { SpotPosition: req.params.pos }
         })
 
         if (pc === null)

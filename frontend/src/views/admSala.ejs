@@ -2,19 +2,24 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SD Maintenance Log</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/computadores.css">
+    <link rel="stylesheet" href="../css/controles.css">
+    <link rel="stylesheet" href="../css/header.css">
 
-    <!-- FontAwesome -->
+    <script src="https://code.jquery.com/jquery-3.6.3.js"
+        integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
+
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
         integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="css/computadores.css" />
-    <link rel="stylesheet" href="css/header.css" />
+    <script src="js/onRender.js"></script>
+
+    <title>Controle da Sala</title>
 </head>
 
 <body>
@@ -27,15 +32,17 @@
         <div class="Loading-progress"></div>
     </div>
 
+    
     <h1 class="room-title">Sala Digital</h1>
     <div class="sala">
         <div class="frente">
             <div>
-                <img class="mesa-frente" src="img/computadores/mesa-frente.png" alt="" />
+                <img class="mesa-frente" src="../img/computadores/mesa-frente.png">
             </div>
-            <a href="/login"><img class="cadeado" src="img/cadeado.png" /></a>
+            <a href="controle_usuarios.html"><img
+                    src="https://static-00.iconduck.com/assets.00/user-circle-gear-icon-503x512-uknj3bht.png"
+                    id="img_user"></a>
         </div>
-
         <div class="mesas">
             <section class="esquerdo">
                 <% for(var i=0; i < 10; i+=2) { %>
@@ -43,14 +50,18 @@
                         <div class="desk mesa-esquerda">
                             <% if(posicoes[i] && i < posicoes.length) { %>
                                 <a href="/relatorio/<%=i+1%>"><img class="pc" src="img/computadores/pc.png"></a>
+                            <% } else { %>
+                                <a href="/adm/computador/cadastrar/<%=i+1%>"><i class="add-btn fas fa-plus-circle"></i></a>
                             <% } %>
-                            <img src="img/computadores/mesa-esquerda.png" />
+                                    <img src="img/computadores/mesa-esquerda.png" />
                         </div>
                         <div class="desk mesa-direita">
                             <% if(posicoes[i + 1] && (i + 1) < posicoes.length) { %>
                                 <a href="/relatorio/<%=i+2%>"><img class="pc" src="img/computadores/pc.png"></a>
-                            <% } %>             
-                            <img src="img/computadores/mesa-direita.png" />      
+                            <% } else { %>
+                                <a href="/adm/computador/cadastrar/<%=i+2%>"><i class="add-btn fas fa-plus-circle"></i></a>
+                            <% } %>
+                                    <img src="img/computadores/mesa-direita.png" />
                         </div>
                     </div>
                     <% } %>
@@ -61,20 +72,25 @@
                         <div class="desk mesa-esquerda">
                             <% if(posicoes[i] && i < posicoes.length) { %>
                                 <a href="/relatorio/<%=i+1%>"><img class="pc" src="img/computadores/pc.png"></a>
+                            <% } else { %>
+                                <a href="/adm/computador/cadastrar/<%=i+1%>"><i class="add-btn fas fa-plus-circle"></i></a>
                             <% } %>
-                            <img src="img/computadores/mesa-esquerda.png" />
+                                <img src="img/computadores/mesa-esquerda.png" />
                         </div>
                         <div class="desk mesa-direita">
                             <% if(posicoes[i + 1] && (i + 1) < posicoes.length) { %>
                                 <a href="/relatorio/<%=i+2%>"><img class="pc" src="img/computadores/pc.png"></a>
-                            <% } %>             
-                            <img src="img/computadores/mesa-direita.png" />      
+                            <% } else { %>
+                                <a href="/adm/computador/cadastrar/<%=i+2%>"><i class="add-btn fas fa-plus-circle"></i></a>
+                            <% } %>
+                                    <img src="img/computadores/mesa-direita.png" />
                         </div>
                     </div>
                     <% } %>
             </section>
         </div>
     </div>
+
 </body>
 
 </html>

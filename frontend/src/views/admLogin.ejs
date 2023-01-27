@@ -5,42 +5,42 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - ADM</title>
+    <link rel="stylesheet" href="../css/login_adm.css">
     <link rel="stylesheet" href="../css/header.css">
-    <link rel="stylesheet" href="../css/error.css">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
         integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>ERROR</title>
 </head>
 
-<body">
+<body>
     <header>
         <a href="/">
             <h1>SD Maintenance Log</h1>
         </a>
-
     </header>
     <div class="Loading">
         <div class="Loading-progress"></div>
     </div>
 
-    <div class="container">
+    <div class="content">
         <div class="left">
-
+            <i class="fas fa-user-tie" style="font-size: 30rem; color:#0d183a;"></i>
         </div>
+
         <div class="right">
-            <div class="image">
-                <i class="fas fa-exclamation-triangle"></i>
-            </div>
-            <div class="error">
-                NOT FOUND
-            </div>
+            <h3 class="title">ACESSO ADMINISTRATIVO</h3>
+
+            <form action="/login" method="POST">
+                <input type="text" placeholder="Login" name="Login">
+                <input type="password" placeholder="Senha" name="Password">
+
+                <button type="submit" value="Entrar">Login<i style="margin-left: .5em;" class="fas fa-sign-in-alt"></i></input>
+            </form>
         </div>
 
     </div>
-
-
-
 </body>
 
 </html>
