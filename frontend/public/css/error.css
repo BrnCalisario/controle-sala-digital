@@ -17,16 +17,8 @@
 body
 {
     background-color: black;
-   background-repeat: no-repeat;
-   background-size:cover;
 }
 
-
-
-.left
-{
-
-}
 
 
 .right
@@ -49,4 +41,19 @@ body
 .error{
     font-size: 60px;
     font-weight: 900;
+}
+
+
+
+@media (max-width: 1400px) {
+    .right
+    {
+        margin-top: 12em;
+    }
+
+    .image
+    {
+        font-size: 90px;
+    }
+
 }
