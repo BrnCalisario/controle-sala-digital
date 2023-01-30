@@ -5,6 +5,15 @@
     font-family: "Segoe UI";
 }
 
+
+body
+{
+    background-color: black;
+}
+
+
+/* ----------------------------------------------------------------------- */
+
 .container
 {
     width: 60%;
@@ -13,13 +22,6 @@
     align-items: center;
     justify-content: center;
 }
-
-body
-{
-    background-color: black;
-}
-
-
 
 .right
 {
@@ -44,6 +46,11 @@ body
 }
 
 
+
+
+
+
+/* ----------------------------------------------------------------------- */
 
 @media (max-width: 1400px) {
     .right

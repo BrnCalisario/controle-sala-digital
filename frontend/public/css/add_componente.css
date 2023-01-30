@@ -1,0 +1,180 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Segoe UI";
+}
+
+
+
+main {
+    display: flex;
+    justify-content: space-between;
+    width: 85%;
+    margin: 0 auto;
+    background-color: transparent;
+}
+
+
+
+.lista{
+    width: 50%;
+    margin-left: 1em;
+    margin-top: 4em;
+    padding: 1em;
+    justify-self: left;
+    border: solid 1px lightgray;
+    border-radius: 5px;
+}
+
+
+.title {
+    width: 80%;
+    font-size: 35px;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.item {
+    padding: 1em;
+    border: solid 1px lightgray;
+    margin-top: 2em;
+    border-radius: 15px;
+    font-size: 20px;
+}
+
+/* ---------------------------------------------------------------------------------------------- */
+
+.right {
+    width: 60%;
+    margin-top: 4em;
+    margin-left: 5em;
+    height: 100%;
+}
+
+.add_componente {
+    padding: 2em;
+    border: solid 1px lightgray;
+    border-radius: 5px;
+    width: 100%;
+    background-color: black;
+    color: white;
+    height: 100%;
+}
+
+
+
+.line {
+    margin-top: 3em;
+    text-align: center;
+}
+
+.transição {
+    letter-spacing: .2rem;
+    margin-left: 2em;
+    padding: .8em;
+    border: 2px solid black;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline: none;
+    border-radius: 10px;
+    width: 50%;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.transição:focus {
+    border: 2px solid #4169E1;
+    background-color: rgb(224, 235, 255);
+    color: black;
+}
+
+
+#enviar {
+    background: linear-gradient(#000000c4, #000000c4) padding-box, linear-gradient(45deg, #6495ED, #4169E1) border-box;
+    box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+    border: 3px solid transparent;
+    padding: .4em;
+    font-size: 20px;
+    font-weight: 600;
+    border-radius: 5px;
+    color: white;
+    -webkit-transition: 0.9s;
+    width: 27%;
+    margin-top: 3em;
+}
+
+
+#enviar:hover {
+    -webkit-transition: 0.9s;
+    color: #000000c4;
+    border: 3px solid #000000c4;
+    background: linear-gradient(white, white) padding-box, linear-gradient(45deg, #6495ED, #4169E1) border-box;
+    background-image: linear-gradient(45deg, #6495ED, #4169E1);
+}
+
+#excluir
+{
+    margin-left: 1em;
+    background: linear-gradient(#000000c4, #000000c4) padding-box, linear-gradient(45deg, #ed6464, #e14141) border-box;
+    box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+    border: 3px solid transparent;
+    padding: .4em;
+    font-size: 20px;
+    font-weight: 600;
+    border-radius: 5px;
+    color: white;
+    -webkit-transition: 0.9s;
+    width: 27%;
+    margin-top: 3em;
+}
+
+
+#excluir:hover
+{
+    color: #000000c4;
+    -webkit-transition: 0.9s;
+    background: linear-gradient(white, white) padding-box, linear-gradient(45deg, #ed6464, #e14141) border-box;
+    background-image: linear-gradient(45deg, #ed6464, #e14141);
+}
+
+
+
+
+/* ---------------------------------------------------------------------------------------------- */
+
+.item .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: rgba(43, 43, 43, 0.952);
+    color: #fff;
+    text-align:center;
+    padding: 5px 0;
+    border-radius: 6px;
+    font-size: 12px;
+    align-items:center;
+    position: absolute;
+    z-index: 1;
+    -webkit-transition: 0.2s;
+    transition: 0.2s;
+   
+}
+
+
+.item:hover .tooltiptext {
+    margin-left: 1em;
+    margin-top: -.8em;
+    visibility: visible;
+}
+
+
+
+.item .tooltiptext::after {
+    content: " ";
+    position: absolute;
+    top: 50%;
+    right: 100%;
+    margin-top: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent black transparent transparent;
+  }

@@ -11,8 +11,7 @@ body {
     font-family: "Segoe UI";
 }
 
-/*  Header */
-
+/* <!----------------------------------------------------------------------------------------------> */
 
 h1 {
     margin: 0;
@@ -30,6 +29,7 @@ h1 {
 }
 
 
+/* <!----------------------------------------------------------------------------------------------> */
 .sala {
     display: inline-block;
     /* margin-top: 50px; */
@@ -39,7 +39,6 @@ h1 {
     border-width: 0 1px 1px 1px;
     height: auto;
 }
-
 
 .frente {
     display: flex;
@@ -77,6 +76,7 @@ h1 {
     transform: scale(1.2);
 }
 
+/* --  Mesas -- */
 .mesas {
     display: flex;
 
@@ -88,12 +88,9 @@ h1 {
     justify-content: center;
     flex-wrap: wrap;
     column-gap: 200px;
+    display: flex;
 }
 
-section {
-    display: flex;
-    /* flex-direction: column; */
-}
 
 .mesa {
     display: flex;
@@ -139,6 +136,11 @@ section {
     margin-left: 82px;
 }
 
+
+
+
+
+/* <!----------------------------------------------------------------------------------------------> */
 @media (max-width: 1400px) {
     :root {
         --desk: 7em;
