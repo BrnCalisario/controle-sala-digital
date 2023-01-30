@@ -11,13 +11,13 @@ class adminController {
             Login: req.body.Login,
             Password: req.body.Password
         })
-        .then(() => {
-            res.redirect('/adm')
-        })
-        .catch(error => {
-            console.log(error.response.data)
-            res.render('../views/notFound')
-        })
+            .then(() => {
+                res.redirect('/adm')
+            })
+            .catch(error => {
+                console.log(error.response.data)
+                res.render('../views/notFound')
+            })
     }
 
     async getHome(req, res) {
@@ -29,12 +29,46 @@ class adminController {
             .catch(error => {
                 return res.redirect("/erro")
             })
-
-        // res.render('../views/admSala')
     }
 
     async getComputerCreate(req, res) {
-        res.render('../views/admComputadores')
+        const pos = req.params.pos
+
+        await axios.get('/computer')
+            .then(response => {
+                const spotList = response.data.map(pc => pc.SpotPosition)
+                if (spotList.filter(s => s == pos).length > 0) {
+                    throw new Error("Lugar já está sendo ocupado")
+                }
+
+                const pcList = response.data.sort(pc => pc.createdAt)
+
+                res.render('../views/admComputadores', { computadores: response.data, posicaoSelecionada: pos })
+            })
+            .catch(error => {
+                res.redirect("/error")
+            })
+    }
+
+    async insertComputer(req, res) {
+        const data = req.body
+
+        await axios.post('/computer', {
+                Name: data.Name,
+                SpotPosition: req.params.pos
+            })
+            .then(response => {
+                axios.post('/device', {
+                    Name: "Este Computador",
+                    Brand: data.Brand,
+                    Description: data.Model,
+                    Computer: data.Name
+                })
+                return res.redirect('/adm')          
+            })
+            .catch(error => {
+                res.redirect('/error')
+            })
     }
 }
 

@@ -2,94 +2,78 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../../css/controles.css">
-  <link rel="stylesheet" href="../../css/header.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../css/controles.css">
+    <link rel="stylesheet" href="../../../css/header.css">
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-    integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <title>Controle de Computadores</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+        integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Controle de Computadores</title>
 </head>
 
 <body>
 
 
-  <header>
-    <a href="/">
-      <h1>SD Maintenance Log</h1>
-    </a>
-    <div class="links">
-      <a href="controle_usuarios.html">Usuário</a>
-      <span>|</span>
-      <a href="controle_sala.html">Sala</a>
+    <header>
+        <a href="/">
+            <h1>SD Maintenance Log</h1>
+        </a>
+        <div class="links">
+            <a href="controle_usuarios.html">Usuário</a>
+            <span>|</span>
+            <a href="controle_sala.html">Sala</a>
+        </div>
+
+    </header>
+    <div class="Loading">
+        <div class="Loading-progress"></div>
     </div>
 
-  </header>
-  <div class="Loading">
-    <div class="Loading-progress"></div>
-  </div>
-
-  <main>
-    <div class="lista">
-      <h3 class="title">Computadores Cadastrados</h3>
-
-      <div class="item">
-        <h3 class="info1">CTPC3626</h3>
-        <h3 class="info2">Posição: 1</h3>
-      </div>
-
-      <div class="item">
-        <h3 class="info1">CTPC3626</h3>
-        <h3 class="info2">Posição: 1</h3>
-      </div>
-
-      <div class="item">
-        <h3 class="info1">CTPC3626</h3>
-        <h3 class="info2">Posição: 1</h3>
-      </div>
-    </div>
-
-    <div class="cadastrar">
-      <div class="title">
-        <i style="color:white; font-size: 5rem; margin-bottom: .4em;" class="fas fa-laptop-medical"></i>
-        <h3 class="title">Cadastar Componente</h3>
-        <!-- <h3 class="title">Editar Componente</h3> -->
-      </div>
-
-      <form action="" method="post">
-        <div class="line">
-          <input type="text" class="transition" style="width: 68%;" placeholder="Nome :" required="required"
-            minlength="6">
-        </div>
-        <div class="line">
-          <input type="text" class="transition" style="width: 68%;" placeholder="Marca :" required="required"
-            minlength="2">
-        </div>
-        <div class="line">
-          <input type="text" class="transition" style="width: 68%;" placeholder="Modelo :" required="required"
-            minlength="2">
+    <main>
+        <div class="lista">
+            <h3 class="title">Computadores Cadastrados</h3>
+            <% for (var i = 0; i < computadores.length; i++) { %>
+                <div class="item">
+                    <h3 class="info1"><%=computadores[i].Name%></h3>
+                    <h3 class="info2">Posição: <%=computadores[i].SpotPosition%></h3>
+                </div>
+            <% } %>
         </div>
 
-        <div class="line">
-          <select class="transition" style="width: 74%; margin-bottom: 1em;" required="required">
-            <!--  puxar da pagina de controle da sala qual posição selecionada, mostrar no select só as posições disponíveis -->
-            <option value="1">Posição na sala: 1</option>
-            <option value="2" selected>Posição na sala: 2</option>
-            <option value="3" disabled>Posição na sala: 3</option>
-          </select>
-        </div>
+        <div class="cadastrar">
+            <div class="title">
+                <i style="color:white; font-size: 5rem; margin-bottom: .4em;" class="fas fa-laptop-medical"></i>
+                <h3 class="title">Cadastar Computador</h3>
+                <!-- <h3 class="title">Editar Componente</h3> -->
+            </div>
 
-        <div class="line" style="margin-top: 4em;">
-          <button type="submit" value="Cadastrar" style="margin-top: 0;">Cadastrar</button>
-          <!-- <button type="submit" value="Cadastrar" id="editar">Editar</button>
-          <button type="submit" value="Cadastrar" id="excluir">Excluir</button> -->
+            <form action="/adm/computador/cadastrar/<%= posicaoSelecionada %> " method="post">
+                <div class="line">
+                    <input name="Name" type="text" class="transition" style="width: 68%;" placeholder="Nome" required="required"
+                        minlength="6">
+                </div>
+                <div class="line">
+                    <input name="Brand" type="text" class="transition" style="width: 68%;" placeholder="Marca" required="required"
+                        minlength="2">
+                </div>
+                <div class="line">
+                    <input name="Model" type="text" class="transition" style="width: 68%;" placeholder="Modelo" required="required"
+                        minlength="2">
+                </div>
+
+                <div class="item" style="width: 38%; margin: 0 auto; padding-left: auto; padding-right: auto;" >
+                    <p style="text-align: center;">Posição selecionada: <%= posicaoSelecionada %></p>
+                </div>
+                
+                <div class="line" style="margin-top: 4em;">
+                    <button type="submit" value="Cadastrar" style="margin-top: 0;">Cadastrar</button>
+                </div>
+            </form>
         </div>
-      </form>
-    </div>
-  </main>
+    </main>
 
 </body>
 

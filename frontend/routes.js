@@ -16,8 +16,9 @@ router.get('/login', adminController.getLogin)
 router.post('/login', adminController.authenticateLogin)
 
 router.get('/adm', adminController.getHome)
-router.get('/adm/computador/cadastrar', adminController.getComputerCreate)
 
+router.get('/adm/computador/cadastrar/:pos', adminController.getComputerCreate)
+router.post('/adm/computador/cadastrar/:pos', adminController.insertComputer)
 
 
 
