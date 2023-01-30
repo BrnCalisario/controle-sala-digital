@@ -83,16 +83,22 @@ h1 {
 }
 
 .esquerdo {
-    margin-right: 200px;
+    width: 50vw;
+    display: flex;
+    justify-content: center;
+    max-height: 900px;
+    flex-wrap: wrap;
+    column-gap: 200px;
 }
 
 section {
     display: flex;
-    flex-direction: column;
+    /* flex-direction: column; */
 }
 
 .mesa {
     display: flex;
+    width: min-content;
 }
 
 .mesa img {
