@@ -97,3 +97,21 @@
     background-image: linear-gradient(45deg, #6495ED, #4169E1);
 }
 
+@media (max-width: 1400px) {
+
+    .content
+    {
+        margin-top: 4em;
+    }
+
+
+    .right .title
+    {
+        font-size: 20px;
+    }
+
+    .left .fas
+    {
+        font-size: 25rem !important;
+    }
+}

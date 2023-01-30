@@ -23,10 +23,9 @@ h1 {
     margin-top: 50px;
     padding: 5px 0;
     border: 3px solid lightgray;
-    width: 1100px;
+    width: 60%;
     margin-right: auto;
     margin-left: auto;
-
     border-radius: 10px;
 }
 
@@ -38,6 +37,7 @@ h1 {
     padding: 1rem 5rem;
     border-radius: 0px 0 7px 7px;
     border-width: 0 1px 1px 1px;
+    height: auto;
 }
 
 
@@ -79,14 +79,13 @@ h1 {
 
 .mesas {
     display: flex;
-    /* margin: 0 auto; */
+
 }
 
 .esquerdo {
     width: 50vw;
     display: flex;
     justify-content: center;
-    max-height: 900px;
     flex-wrap: wrap;
     column-gap: 200px;
 }
@@ -142,16 +141,47 @@ section {
 
 @media (max-width: 1400px) {
     :root {
-        --desk: 150px;
+        --desk: 7em;
         --pc: calc(var(--desk) - 30px)
     }
 
-    .frente img {
-        width: 160px;
 
+    .room-title {
+        width: 70%;
+        font-size: 23px;
+        margin-top: 25px;
+    }
+
+    .frente .mesa-frente {
+        width: 140px
+    }
+
+    #img_user
+    {
+        width: 3.5em;
+    }
+
+    .frente .cadeado {
+        width: 3.5em;
+        height: 3.5em;
     }
 
     .mesa-direita .pc {
         margin-left: 25px;
+    }
+
+    .add-btn
+    {
+        font-size: 25px;
+    }
+
+    .mesa-esquerda .add-btn {
+        margin-top: 6px;
+        margin-left: 34px;
+    }
+    
+    .mesa-direita .add-btn {
+        margin-top: 6px;
+        margin-left: 53px;
     }
 }
