@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+        integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <title>Controle de Usuários</title>
+
+    <link rel="stylesheet" href="../css/controles.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <script src="../js/CPF_mask.js"></script>
+</head>
+
+<body>
+
+    <header>
+        <a href="Computadores.html">
+            <h1>SD Maintenance Log</h1>
+        </a>
+        <div class="links">
+            <a href="controle_computadores.html">Computador</a>
+            <span>|</span>
+            <a href="controle_sala.html">Sala</a>
+        </div>
+
+    </header>
+    <div class="Loading">
+        <div class="Loading-progress"></div>
+    </div>
+
+
+    <main>
+        <div class="lista">
+            <h3 class="title">Usuários Cadastrados</h3>
+            <% for( let i = 0; i < usuarios.length; i++ ) { %>
+                <div class="item">
+                    <h3 class="info1"><span>EDV: </span><%= usuarios[i].EDV %></h3>
+                    <h3 class="info2"><%= usuarios[i].Full_Name %> </h3>
+                </div>
+            <% } %>
+        </div>
+
+        <div class="cadastrar">
+            <div class="title">
+                <i class="fas fa-users-cog" style="color: white; font-size: 5rem;"></i>
+                <h3 class="title" id="cadastrar">Cadastar Usuário</h3>
+            </div>
+
+            <form action="/adm/usuarios" method="POST">
+                <div class="line">
+                    <input name="Name" type="text" class="transition" placeholder="Nome :" required="required" minlength="2">
+                    <input name="Name2" type="text" class="transition" placeholder="Sobrenome :" required="required" minlength="2">
+                </div>
+                <div class="line">
+                    <input name="EDV" type="text" class="transition" placeholder="EDV :" required="required" minlength="8" maxlength="8">
+                    <input name="CPF" type="text" class="transition" id="cpf" onkeypress="mascara()" placeholder="CPF :" required="required" minlength="14" maxlength="14">
+                </div>
+                <div class="line">
+                    <input name="Role" type="text" class="transition" placeholder="Cargo: " required="required" minlength="4">
+                    <select name="Shift" class="transition" style="width: 44%;" required="required">
+                        <option value="Turno" selected disabled>Turno :</option>
+                        <option value="Manhã">Manhã</option>
+                        <option value="Tarde">Tarde</option>
+                    </select>
+                </div>
+
+                <div class="line">
+                    <button type="submit" value="Cadastrar" id="cadastrar">Cadastrar</button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+  
+
+</body>
+
+</html>

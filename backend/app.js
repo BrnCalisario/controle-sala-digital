@@ -5,6 +5,7 @@ import spotRoutes from './src/routes/spotRoutes.js'
 import computerRoutes from './src/routes/computerRoutes.js'
 import deviceRoutes from './src/routes/deviceRoutes.js'
 import adminRoutes from './src/routes/adminRoutes.js'
+import logRoutes from './src/routes/logRoutes.js'
 
 class App {
     constructor() {
@@ -24,6 +25,7 @@ class App {
         this.app.use('/computer', computerRoutes)
         this.app.use('/device', deviceRoutes)
         this.app.use('/admin', adminRoutes)
+        this.app.use('/log', logRoutes)
     }
 }
 

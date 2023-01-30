@@ -31,6 +31,36 @@ class adminController {
             })
     }
 
+    async getUserCreate(req, res) {
+        await axios.get('/user')
+            .then(response => {
+                console.log(response.data)
+                return res.render('../views/admUsuarios', { usuarios: response.data })
+            })
+            .catch(error => {
+                return res.redirect('/erro')
+            })
+    }
+
+    async insertUser(req, res) {
+        const data = req.body
+        console.log(data)
+
+        await axios.post('/user', {
+            EDV: data.EDV,
+            Full_Name: data.Name + " " + data.Name2,
+            Role: data.Role,
+            Shift: data.Shift,
+            CPF: data.CPF.replaceAll('.', '').replace('-', '')
+        }).then(response => {
+            return res.redirect('/adm')
+        })
+        .catch(error => {
+            res.redirect('/error')
+        })
+
+    }
+
     async getComputerCreate(req, res) {
         const pos = req.params.pos
 
@@ -54,9 +84,9 @@ class adminController {
         const data = req.body
 
         await axios.post('/computer', {
-                Name: data.Name,
-                SpotPosition: req.params.pos
-            })
+            Name: data.Name,
+            SpotPosition: req.params.pos
+        })
             .then(response => {
                 axios.post('/device', {
                     Name: "Este Computador",
@@ -64,7 +94,7 @@ class adminController {
                     Description: data.Model,
                     Computer: data.Name
                 })
-                return res.redirect('/adm')          
+                return res.redirect('/adm')
             })
             .catch(error => {
                 res.redirect('/error')

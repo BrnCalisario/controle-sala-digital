@@ -67,8 +67,9 @@ class computerController {
             d.dataValues.Logs = queryLogs
         }
 
-        const result = { computer: pc, devices: queryDevices }
-        res.json(result)
+        pc.dataValues.devices = queryDevices
+
+        res.json(pc)
     }
 }
 
