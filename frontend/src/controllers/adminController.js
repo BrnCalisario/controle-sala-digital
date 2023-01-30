@@ -100,6 +100,12 @@ class adminController {
                 res.redirect('/error')
             })
     }
+
+    async insertLog(req, res) {
+        const position = req.params.pos
+
+        
+    }
 }
 
 export default new adminController()
