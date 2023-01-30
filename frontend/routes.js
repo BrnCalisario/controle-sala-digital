@@ -20,7 +20,8 @@ router.get('/adm', adminController.getHome)
 router.get('/adm/computador/cadastrar/:pos', adminController.getComputerCreate)
 router.post('/adm/computador/cadastrar/:pos', adminController.insertComputer)
 
-
+router.get('/adm/usuarios', adminController.getUserCreate)
+router.post('/adm/usuarios', adminController.insertUser)
 
 router.get('/*', (req, res) => {
     res.render('notFound')

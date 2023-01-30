@@ -9,6 +9,7 @@ class UserController {
     async create(req, res) {
         try {
             user.create(req.body);
+            return res.sendStatus(200)
         } catch (e) {
             return res.status(400).json(e)
         }

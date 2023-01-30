@@ -11,36 +11,19 @@ main {
     display: flex;
     justify-content: space-between;
     width: 85%;
-    margin: 2rem auto;
+    margin: 0 auto;
     background-color: transparent;
 }
 
 .lista{
     width: 50%;
     margin-left: 1em;
-    /* margin-top: 4em; */
+    margin-top: 4em;
     padding: 1em;
     justify-self: left;
     border: solid 1px lightgray;
     border-radius: 5px;
-    overflow-x: hidden;
-    max-height: 500px;
 }
-
-*::-webkit-scrollbar {
-    width: 5px;
-  }
-
-  *::-webkit-scrollbar-track {
-    background: #ffffff;
-  }
-
-  *::-webkit-scrollbar-thumb {
-    background-color: #b5b5b5;
-    border-radius: 15px;
-    border: 10px none #ffffff;
-  }
-
 
 .title {
 
@@ -60,6 +43,7 @@ main {
 
 .right {
     width: 80%;
+    margin-top: 4em;
     margin-left: 5em;
 }
 
@@ -67,6 +51,7 @@ main {
 
 .tds_relatorios
 {
+    margin-top: 1em;
     padding: 2em;
     border: solid 1px lightgray;
     border-radius: 5px;
@@ -90,11 +75,14 @@ main {
 {
     margin-right: .5em;
     padding: .3em;
+
 }
 
 #concluir:hover
 {
    color: rgb(12, 211, 12);
+   -webkit-transition: 0.8s;
+    transition: 0.8s;
 }
 
 
@@ -110,6 +98,8 @@ main {
     align-items: center;
     position: absolute;
     z-index: 1;
+    -webkit-transition: 0.2s;
+    transition: 0.2s;
 }
 
 
@@ -136,7 +126,7 @@ main {
 
 
 .add_relatorio {
-    padding: 1em;
+    padding: 2em;
     border: solid 1px lightgray;
     border-radius: 5px;
     width: 100%;
@@ -151,8 +141,7 @@ main {
 
 .qual
 {
-  /* display: flex; */
-   font-size: 10px; 
+   font-size: 15px; 
 }
 
 .line {
@@ -161,30 +150,34 @@ main {
 }
 
 
-#transição {
+.transição {
+    letter-spacing: .2rem;
     margin-left: 2em;
     padding: .8em;
-    border: 1px solid lightgray;
+    border: 2px solid black;
     -webkit-transition: 0.5s;
     transition: 0.5s;
     outline: none;
     border-radius: 10px;
     width: 27%;
     font-weight: 600;
+    font-size: 15px;
 }
 
-#transição:focus {
-    border: 1px solid #555;
-    background-color: #f2f4f8
+.transição:focus {
+    border: 2px solid #4169E1;
+    background-color: rgb(224, 235, 255);
+    color: black;
 }
 
 
 textarea {
+    letter-spacing: .2rem;
     margin-left: 2em;
     height: 80px;
     width: 90%;
     padding: .8em;
-    border: 1px solid #ccc;
+    border: 2px solid black;
     -webkit-transition: 0.5s;
     transition: 0.5s;
     outline: none;
@@ -195,8 +188,9 @@ textarea {
 
 
 textarea:focus {
-    border: 1px solid #555;
-    background-color: #F8F8F8;
+    border: 2px solid #4169E1;
+    background-color: rgb(224, 235, 255);
+    color: black;
 
 }
 
@@ -316,3 +310,42 @@ textarea:focus {
 .circle:hover .tooltiptext {
     visibility: visible;
 }
+
+
+
+.item .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: rgba(43, 43, 43, 0.952);
+    color: #fff;
+    text-align:center;
+    padding: 5px 0;
+    border-radius: 6px;
+    font-size: 12px;
+    align-items:center;
+    position: absolute;
+    z-index: 1;
+    -webkit-transition: 0.2s;
+    transition: 0.2s;
+   
+}
+
+
+.item:hover .tooltiptext {
+    margin-left: 1em;
+    margin-top: -.8em;
+    visibility: visible;
+}
+
+
+
+.item .tooltiptext::after {
+    content: " ";
+    position: absolute;
+    top: 50%;
+    right: 100%; /* To the left of the tooltip */
+    margin-top: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent black transparent transparent;
+  }
