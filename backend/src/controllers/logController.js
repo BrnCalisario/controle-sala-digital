@@ -13,15 +13,14 @@ class logController {
             { where: { EDV: req.body.EDV, CPF: req.body.CPF } }
         ).catch(error => { return res.sendStatus(400) })
 
-        if (userQuery === null)
+        if (!userQuery)
             return res.sendStatus(400)
-        console.log(userQuery)
 
         const deviceQuery = await device.findOne(
             { where: { ID: req.body.Device } }
         ).catch(error => { return res.sendStatus(400) })
 
-        if (deviceQuery == null)
+        if (!deviceQuery)
             return res.sendStatus(400)
 
         await log.create({

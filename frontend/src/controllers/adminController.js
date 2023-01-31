@@ -15,7 +15,6 @@ class adminController {
                 res.redirect('/adm')
             })
             .catch(error => {
-                console.log(error.response.data)
                 res.render('../views/notFound')
             })
     }
@@ -101,10 +100,8 @@ class adminController {
             })
     }
 
-    async insertLog(req, res) {
-        const position = req.params.pos
-
-        
+    async getComputerComponent(req, res) {
+        res.render('../views/addComponente')
     }
 }
 

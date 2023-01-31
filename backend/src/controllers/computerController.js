@@ -60,16 +60,26 @@ class computerController {
             where: { Computer: pc.Name }
         })
 
+        var allLogs = []
         for (var d of queryDevices) {
             const queryLogs = await log.findAll({
                 where: { Device: d.ID }
             })
+
+            var withDevice = queryLogs.map((log) => {
+                log.Device = d.Name
+                return log
+            })
+
+            allLogs.push.apply(allLogs, withDevice)
+
             d.dataValues.Logs = queryLogs
         }
 
         pc.dataValues.devices = queryDevices
 
-        res.json(pc)
+        const result = { pc, allLogs }
+        res.json(result)
     }
 }
 
