@@ -24,6 +24,30 @@ class DeviceController {
         }
     }
 
+    async update(req, res) {
+        await device.update(req.body,
+            { where: { ID: req.body.ID } }
+        )
+            .then(result => {
+                return res.sendStatus(200)
+            })
+            .catch(err => {
+                return res.sendStatus(400)
+            })
+    }
+
+    async delete(req, res) {
+        await device.destroy(
+            { where: { ID: req.body.ID } })
+            .then(result => {
+                return res.sendStatus(200)
+            })
+            .catch(err => {
+                return res.sendStatus(400)
+            })
+        
+    }
+
     async getByPC(req, res) {
         const query = await device.findAll({
             where: { Computer: req.params.pc },
