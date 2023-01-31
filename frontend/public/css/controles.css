@@ -11,7 +11,11 @@ main {
     display: flex;
 }
 
-
+.title {
+    font-size: 35px;
+    margin-bottom: 2em;
+    text-align: center;
+}
 
 /* ----------------------------------------------------------------------- */
 .lista {
@@ -34,11 +38,6 @@ main {
     align-items: center;
 }
 
-.title {
-    font-size: 35px;
-    margin-bottom: 2em;
-    text-align: center;
-}
 
 .info1 span
 {
@@ -70,14 +69,6 @@ main {
     justify-content: center;
     align-items: center;
     text-align: center;
-}
-
-label
-{
-    color: lightgrey;
-    text-align: left;
-    margin-right: 42%;
-    font-size: 20px;
 }
 
 .cadastrar .transition {
