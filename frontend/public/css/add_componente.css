@@ -12,6 +12,7 @@ main {
     width: 85%;
     margin: 0 auto;
     background-color: transparent;
+    height: 40em;
 }
 
 
@@ -26,6 +27,10 @@ main {
     justify-self: left;
     border: solid 1px lightgray;
     border-radius: 5px;
+    height: 105%;
+    overflow-y: scroll;
+    scrollbar-width: auto;
+    scrollbar-color: #5C8EF2 #eaebeb;
 }
 
 
@@ -45,6 +50,19 @@ main {
 }
 
 
+.lista::-webkit-scrollbar {
+    width: 16px;
+  }
+
+  .lista::-webkit-scrollbar-track {
+    background: #eaebeb;
+  }
+
+  .lista::-webkit-scrollbar-thumb {
+    background-color: #111B35;
+    border-radius: 12px;
+    border: 2px outset #111B35;
+  }
 
 /* ---------------------------------------------------------------------------------------------- */
 
@@ -65,6 +83,12 @@ main {
     height: 100%;
 }
 
+.fas
+{
+    color: white;
+    font-size: 2em;
+    margin-right: .3em;
+}
 
 .line {
     margin-top: 3em;
@@ -154,11 +178,9 @@ main {
     padding: 5px 0;
     border-radius: 6px;
     font-size: 12px;
-    align-items:center;
-    position: absolute;
-    z-index: 1;
     -webkit-transition: 0.2s;
     transition: 0.2s;
+    float: right;
    
 }
 
@@ -171,13 +193,47 @@ main {
 
 
 
-.item .tooltiptext::after {
-    content: " ";
-    position: absolute;
-    top: 50%;
-    right: 100%;
-    margin-top: -5px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: transparent black transparent transparent;
+
+  @media (max-width: 1400px) {
+
+    main
+    {
+        height: 25em;
+    }
+
+    .title {
+        width: 80%;
+        font-size: 25px;
+    }
+
+    .add_componente .title
+    {
+        margin-top: 0.2em !important;
+        font-size: 30px;
+       
+    }
+
+    .fas
+    {
+        font-size: 1em;
+    }
+
+
+    .transição {
+        font-size: 15px;
+    }
+
+    .line {
+        margin-top: 2em;
+    }
+    
+    #enviar
+    {
+        margin-top:2em;
+    }
+
+    .item
+    {
+        font-size: 15px;
+    }
   }

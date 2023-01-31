@@ -9,11 +9,12 @@ main {
     margin: 0 auto;
     justify-content: space-between;
     display: flex;
+    height: 40em;
 }
 
 .title {
     font-size: 35px;
-    margin-bottom: 2em;
+    margin-bottom: 1em;
     text-align: center;
 }
 
@@ -24,6 +25,24 @@ main {
     padding: 2em;
     border: 1px solid lightgray;
     border-radius: 5px;
+    height: 105%;
+    overflow-y: scroll;
+    scrollbar-width: auto;
+    scrollbar-color: #5C8EF2 #eaebeb;
+}
+
+.lista::-webkit-scrollbar {
+    width: 16px;
+}
+
+.lista::-webkit-scrollbar-track {
+    background: #eaebeb;
+}
+
+.lista::-webkit-scrollbar-thumb {
+    background-color: #111B35;
+    border-radius: 12px;
+    border: 2px outset #111B35;
 }
 
 
@@ -39,9 +58,8 @@ main {
 }
 
 
-.info1 span
-{
-    
+.info1 span {
+
     font-size: 15px;
 }
 
@@ -52,6 +70,8 @@ main {
 
 
 /* ----------------------------------------------------------------------- */
+
+
 .cadastrar {
     background-color: black;
     padding: 2em;
@@ -60,7 +80,7 @@ main {
     width: 38%;
     color: white;
     border-radius: 25px;
-    height: 100%;
+    height: 105%;
 }
 
 
@@ -69,6 +89,10 @@ main {
     justify-content: center;
     align-items: center;
     text-align: center;
+}
+
+#first {
+    margin-top: 5em;
 }
 
 .cadastrar .transition {
@@ -80,9 +104,9 @@ main {
     transition: 0.5s;
     outline: none;
     border-radius: 10px;
-    width: 38%;
+    width: 35%;
     font-weight: 600;
-    font-size: 14px;
+    font-size: 18px;
     color: #555;
     margin-bottom: 2em;
 }
@@ -105,8 +129,8 @@ main {
     border-radius: 10px;
     width: 30%;
     color: white;
-    margin-top: 2em;
     margin-bottom: 1em;
+    margin-top: 2em;
 }
 
 
@@ -117,8 +141,7 @@ main {
     background-image: linear-gradient(45deg, #6495ED, #4169E1);
 }
 
-#excluir
-{
+#excluir {
     background: linear-gradient(#000000c4, #000000c4) padding-box, linear-gradient(45deg, #ed6464, #e14141) border-box;
     box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
     border: 2px solid transparent;
@@ -134,10 +157,73 @@ main {
 }
 
 
-#excluir:hover
-{
+#excluir:hover {
     color: #000000c4;
     -webkit-transition: 0.9s;
     background: linear-gradient(white, white) padding-box, linear-gradient(45deg, #ed6464, #e14141) border-box;
     background-image: linear-gradient(45deg, #ed6464, #e14141);
+}
+
+
+
+@media (max-width: 1400px) {
+
+    main {
+        height: 25em;
+    }
+
+    .lista {
+        margin-top: 3em;
+    }
+
+    .lista .title {
+        font-size: 25px;
+    }
+
+    .item {
+        font-size: 15px;
+    }
+
+
+    .cadastrar {
+        height: 105%;
+        margin-top: 3em;
+    }
+
+    .cadastrar .title {
+        font-size: 20px;
+        margin-bottom: 1em;
+    }
+
+    .cadastrar i {
+        font-size: 2em !important;
+    }
+
+    .cadastrar .transition {
+        font-size: 12px;
+    }
+
+
+    .cadastrar .item {
+        font-size: 13px !important;
+        padding: 1em !important;
+        justify-content: center !important;
+    }
+
+
+    #first {
+        margin-top: 3em;
+    }
+
+
+    #line {
+        margin-top: 1em !important;
+    }
+
+    .cadastrar button[type="submit"] {
+        margin-left: .8em;
+        font-size: 15px;
+        margin-top: 1em;
+    }
+
 }

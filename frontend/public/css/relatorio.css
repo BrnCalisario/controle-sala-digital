@@ -11,6 +11,7 @@ main {
     width: 85%;
     margin: 0 auto;
     background-color: transparent;
+    height: 40em;
 }
 
 .title {
@@ -28,11 +29,15 @@ main {
 .lista {
     width: 50%;
     margin-left: 1em;
-    margin-top: 4em;
+    margin-top: 5em !important;
     padding: 1em;
     justify-self: left;
     border: solid 1px lightgray;
     border-radius: 5px;
+    height: 105%;
+    overflow-y: scroll;
+    scrollbar-width: auto;
+    scrollbar-color: #5C8EF2 #eaebeb;
 }
 
 .item {
@@ -44,12 +49,27 @@ main {
 }
 
 
+.lista::-webkit-scrollbar {
+    width: 16px;
+  }
+
+  .lista::-webkit-scrollbar-track {
+    background: #eaebeb;
+  }
+
+  .lista::-webkit-scrollbar-thumb {
+    background-color: #111B35;
+    border-radius: 12px;
+    border: 2px outset #111B35;
+  }
+
 
 
 /* ----------------------------------------------------------------------- */
 .right {
     width: 80%;
-    margin-top: 4em;
+    height: 100%;
+    margin-top: 5em !important;
     margin-left: 5em;
 }
 
@@ -61,6 +81,7 @@ main {
     width: 100%;
     background-color: black;
     color: white;
+    height: 60%;
 }
 
 .line {
@@ -144,7 +165,26 @@ textarea:focus {
     border: solid 1px lightgray;
     border-radius: 5px;
     width: 100%;
+    height: 28%;
+    overflow-y: scroll;
+    scrollbar-width: auto;
+    scrollbar-color: #5C8EF2 #eaebeb;
 }
+
+
+.tds_relatorios::-webkit-scrollbar {
+    width: 16px;
+  }
+
+  .tds_relatorios::-webkit-scrollbar-track {
+    background: #eaebeb;
+  }
+
+  .tds_relatorios::-webkit-scrollbar-thumb {
+    background-color: #111B35;
+    border-radius: 12px;
+    border: 2px outset #111B35;
+  }
 
 
 .relatorio {
@@ -346,8 +386,73 @@ textarea:focus {
 
 
 @media (max-width: 1400px) {
+
+    .title
+    {
+        font-size: 25px;
+    }
+
+    .add_relatorio
+    {
+        height: 50%;
+    }
+
     .transição 
     {
         width: 34%;
+        font-size: 12px;
     }
+
+    textarea
+    {
+        font-size: 12px;
+    }
+
+
+    #enviar
+    {
+        font-size: 18px;
+    }
+
+    .lista
+    {
+        height: 96%;
+    }
+
+    .lista .title
+    {
+        font-size: 20px;
+    }
+
+    .item
+    {
+        font-size: 15px;
+    }
+
+    .tds_relatorios .title
+    {
+        font-size: 20px;
+    }
+
+    .tds_relatorios i
+    {
+        font-size: 2em !important;
+    }
+
+    #retorno_relatorio
+    {
+        font-size: 12px !important;
+    }
+
+    .relatorio
+    {
+        font-size: 15px;
+        padding: .5em;
+    }
+
+    .relatorio i
+    {
+        font-size: 1em !important;
+    }
+    
 }
