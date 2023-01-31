@@ -71,15 +71,14 @@ class computerController {
                 return log
             })
 
-
             allLogs.push.apply(allLogs, withDevice)
 
             d.dataValues.Logs = queryLogs
         }
 
         pc.dataValues.devices = queryDevices
-        
-        const result = {pc, allLogs}
+
+        const result = { pc, allLogs }
         res.json(result)
     }
 }

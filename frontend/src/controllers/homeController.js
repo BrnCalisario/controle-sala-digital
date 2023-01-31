@@ -19,9 +19,17 @@ class HomeController {
     async getLog(req, res) {
         await axios.get('/computer/fullStats/' + req.params.pos)
             .then(response => {
-                
-                console.log(response.data.pc)
-                console.log(response.data.allLogs)
+                console.log(response.data)
+
+                var myLogs = response.data.allLogs
+                myLogs = myLogs.map((l) => {
+                    var date = new Date(l.createdAt).toJSON().slice(0, 10).split('-')
+                    l.createdAt = date[2] + "/" + date[1] + "/" + date[0]
+                    return l
+                })
+
+                console.log(myLogs)
+
                 return res.render('../views/relatorio', { computador: response.data.pc, logs: response.data.allLogs})
             })
             .catch(error => {

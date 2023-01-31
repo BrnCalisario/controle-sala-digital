@@ -100,6 +100,9 @@ class adminController {
             })
     }
 
+    async getComputerComponent(req, res) {
+        res.render('../views/addComponente')
+    }
 }
 
 export default new adminController()
