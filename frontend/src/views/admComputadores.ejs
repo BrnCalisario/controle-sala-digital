@@ -32,6 +32,9 @@
         <div class="Loading-progress"></div>
     </div>
 
+
+    <!---------------------------------------------------------------------------------------------------------->
+
     <main>
         <div class="lista">
             <h3 class="title">Computadores Cadastrados</h3>
@@ -43,11 +46,15 @@
             <% } %>
         </div>
 
+
+        
+    <!---------------------------------------------------------------------------------------------------------->
+
+     <!-- CADASTRAR COMPUTADOR -->
         <div class="cadastrar">
             <div class="title">
                 <i style="color:white; font-size: 5rem; margin-bottom: .4em;" class="fas fa-laptop-medical"></i>
                 <h3 class="title">Cadastar Computador</h3>
-                <!-- <h3 class="title">Editar Computador</h3> -->
             </div>
 
             <form action="/adm/computador/cadastrar/<%= posicaoSelecionada %> " method="post">
@@ -73,6 +80,41 @@
                 </div>
             </form>
         </div>
+
+
+
+
+         <!-- EDITAR COMPUTADOR -->
+        <!-- <div class="cadastrar">
+            <div class="title">
+                <i style="color:white; font-size: 5rem; margin-bottom: .4em;" class="fas fa-laptop-medical"></i>
+                <h3 class="title">Editar Computador</h3>
+            </div>
+
+            <form action="/adm/computador/cadastrar/<%= posicaoSelecionada %> " method="post">
+                <div class="line">
+                    <input name="Name" type="text" class="transition" style="width: 68%;" placeholder="Nome" required="required"
+                        minlength="6">
+                </div>
+                <div class="line">
+                    <input name="Brand" type="text" class="transition" style="width: 68%;" placeholder="Marca" required="required"
+                        minlength="2">
+                </div>
+                <div class="line">
+                    <input name="Model" type="text" class="transition" style="width: 68%;" placeholder="Modelo" required="required"
+                        minlength="2">
+                </div>
+
+                <div class="item" style="width: 38%; margin: 0 auto; padding-left: auto; padding-right: auto;" >
+                    <p style="text-align: center;">Posição selecionada: <%= posicaoSelecionada %></p>
+                </div>
+                
+                <div class="line" style="margin-top: 4em;">
+                    <button type="submit" value="Cadastrar" style="margin-top: 0;">Cadastrar</button>
+                </div>
+            </form>
+        </div> -->
+
     </main>
 
 </body>

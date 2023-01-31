@@ -87,7 +87,7 @@ main {
 
 .transição:focus {
     border: 2px solid #4169E1;
-    background-color: rgb(224, 235, 255);
+    background-color: #F8F8F8;
     color: black;
 }
 
