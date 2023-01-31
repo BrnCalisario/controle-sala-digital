@@ -9,8 +9,8 @@ const router = new Router()
 
 router.get('/', homeController.getHome)
 
-
-router.get('/relatorio/:pos', homeController.getRelatorio)
+router.get('/relatorio/:pos', homeController.getLog)
+router.post('/relatorio/:pos', homeController.insertLog)
 
 router.get('/login', adminController.getLogin)
 router.post('/login', adminController.authenticateLogin)

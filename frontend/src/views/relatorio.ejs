@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../css/relatorio.css">
     <link rel="stylesheet" href="../../css/header.css">
+    <script src="../js/CPF_mask.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
         integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -17,7 +18,7 @@
 <body>
 
     <header>
-        <a href="Computadores.html">
+        <a href="/">
             <h1>SD Maintenance Log</h1>
         </a>
 
@@ -61,21 +62,21 @@
                     <br>
                 </h4>
 
-                <form action="relatorio/<%= computador.SpotPosition %>" method="">
+                <form action="/relatorio/<%= computador.SpotPosition %>" method="POST">
                     <div class="line">
-                        <select class="transição">
+                        <select name="Type" class="transição">
                             <option value="" selected disabled required="required"> Tipo relatorio</option>
                             <option value="Grave">Grave</option>
                             <option value="Médio">Médio</option>
                             <option value="Simples">Simples</option>
                         </select>
 
-                        <input type="text" class="transição" placeholder="EDV:" required="required" minlength="8" maxlength="8">
-                        <input type="text" class="transição" id="cpf" onkeypress="mascara()" placeholder="CPF:" required="required">
+                        <input name="EDV" type="text" class="transição" placeholder="EDV:" required="required" minlength="8" maxlength="8">
+                        <input name="CPF" type="text" class="transição" id="cpf" onkeypress="mascara()" placeholder="CPF:" required="required" minlength="14" maxlength="14">
                     </div>
 
                     <div style="display: flex; justify-content: end;">
-                        <select class="transição" style="margin-right: 10px;">
+                        <select name="Device" class="transição" style="margin-right: 10px;">
                             <option disabled selected>Dispositivo</option>
                             <% for( let i = 0; i < computador.devices.length; i++ ) { %>
                                 <option value="<%= computador.devices[i].ID %>">
@@ -86,7 +87,7 @@
                     </div>
 
                     <div class="line">
-                        <textarea placeholder="Descrição:" required="required" maxlength="200"></textarea>
+                        <textarea name="Description" placeholder="Descrição:" required="required" maxlength="200"></textarea>
                     </div>
 
                     <div class="line">
@@ -111,16 +112,19 @@
                 </form>
 
 
-                <% for( let i = 0; i < computador.devices.length; i++ ) { %>
-                    <% for( let j = 0; j < computador.devices[i].Logs.length; j++ ) { %>
-                        <div class="relatorio">
-                            <div class="esquerda_relatorio">
-                                <i class="fas fa-clipboard-check" id="concluir"><span class="tooltiptext">Marcar como
-                                        resolvido</span></i>
-                                <h5 class="nome"></h5>
+                <% for( let i = 0; i < logs.length; i++ ) { %>
+                    <div class="relatorio" id="<%=logs[i].Type%>">
+                        <div class="esquerda_relatorio">
+                            <h5 class="nome"><%= logs[i].Description %></h5>
+                        </div>
+                        <div class="direita_relatorio">
+                            <span style=" margin-right: 1em; font-size: 15px;"><%= logs[i].Device %></span>
+                            <div class="circle"> <span class="tooltiptext">Data: 25/01/2023 <br> Usuário: 92900544</span>
                             </div>
                         </div>
-                    <% } %>
+                    </div>
+
+                    
                 <% } %>
 
 
@@ -137,8 +141,8 @@
                         </div>
                     </div>
 
-                </div>
-
+                </div> -->
+<!-- 
                 <div class="relatorio" id="Grave">
                     <div class="esquerda_relatorio">
                         <i class="fas fa-clipboard-check" id="concluir"><span class="tooltiptext">Marcar como
