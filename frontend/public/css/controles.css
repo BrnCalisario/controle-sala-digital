@@ -11,7 +11,11 @@ main {
     display: flex;
 }
 
-
+.title {
+    font-size: 35px;
+    margin-bottom: 2em;
+    text-align: center;
+}
 
 /* ----------------------------------------------------------------------- */
 .lista {
@@ -34,11 +38,6 @@ main {
     align-items: center;
 }
 
-.title {
-    font-size: 35px;
-    margin-bottom: 2em;
-    text-align: center;
-}
 
 .info1 span
 {
@@ -72,14 +71,6 @@ main {
     text-align: center;
 }
 
-label
-{
-    color: lightgrey;
-    text-align: left;
-    margin-right: 42%;
-    font-size: 20px;
-}
-
 .cadastrar .transition {
     letter-spacing: .2rem;
     margin-left: 2em;
@@ -98,7 +89,7 @@ label
 
 .cadastrar .transition:focus {
     border: 2px solid #4169E1;
-    background-color: rgb(224, 235, 255);
+    background-color: #F8F8F8;
     color: black;
 }
 

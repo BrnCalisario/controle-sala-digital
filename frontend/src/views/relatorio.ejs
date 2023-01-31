@@ -30,7 +30,7 @@
         <div class="Loading-progress"></div>
     </div>
 
-
+<!--------------------------------------------------------------------------------------------->
 
 
     <main>
@@ -51,6 +51,8 @@
                 <% } %>
         </div>
 
+        
+<!--------------------------------------------------------------------------------------------->
 
         <div class="right" style="margin-top: 2em;">
             <div class="add_relatorio">
@@ -64,19 +66,14 @@
 
                 <form action="/relatorio/<%= computador.SpotPosition %>" method="POST">
                     <div class="line">
-                        <select name="Type" class="transição">
+                        <select class="transição" style="width: 38%; margin-left: 2.8em;">
                             <option value="" selected disabled required="required"> Tipo relatorio</option>
                             <option value="Grave">Grave</option>
                             <option value="Médio">Médio</option>
                             <option value="Simples">Simples</option>
                         </select>
 
-                        <input name="EDV" type="text" class="transição" placeholder="EDV:" required="required" minlength="8" maxlength="8">
-                        <input name="CPF" type="text" class="transição" id="cpf" onkeypress="mascara()" placeholder="CPF:" required="required" minlength="14" maxlength="14">
-                    </div>
-
-                    <div style="display: flex; justify-content: end;">
-                        <select name="Device" class="transição" style="margin-right: 10px;">
+                        <select class="transição" style="margin-right: 10px; width: 38%;">
                             <option disabled selected>Dispositivo</option>
                             <% for( let i = 0; i < computador.devices.length; i++ ) { %>
                                 <option value="<%= computador.devices[i].ID %>">
@@ -87,12 +84,16 @@
                     </div>
 
                     <div class="line">
-                        <textarea name="Description" placeholder="Descrição:" required="required" maxlength="200"></textarea>
+                        <input type="text" class="transição" placeholder="EDV:" required="required" minlength="8" maxlength="8">
+                        <input type="text" class="transição" id="cpf" onkeypress="mascara()" placeholder="CPF:" required="required">
+                    </div>
+
+                    <div class="line">
+                        <textarea placeholder="Descrição:" required="required" maxlength="200"></textarea>
                     </div>
 
                     <div class="line">
                         <button type="submit" id="enviar">Enviar</button>
-
                     </div>
                 </form>
             </div>
