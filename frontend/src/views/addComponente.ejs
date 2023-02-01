@@ -64,6 +64,11 @@
         <!---------------------------------------------------------------------------------------------->
 
         <div class="right">
+            <div class="buttons">
+                <button id="selecionado">Componentes</button>
+                <button id="nao_selecionado" style="margin-left: .3em;">Relatorios</button>
+            </div>
+
             <!-- CADASTRAR COMPONENTE -->
             <div class=<%=edit ? "some" : "add_componente" %> >
                 <div class="title" style="margin-top: 1em;">
@@ -102,7 +107,7 @@
             <div class=<%=edit ? "add_componente" : "some" %>>
                 <div class="title" style="margin-top: 1em;">
                     <h3 class="title">
-                        <i class="fas" style="color: white; font-size: 2em; margin-right: .3em;"></i>
+                        <i class="fas"></i>
                         Editar Componente
                     </h3>
                 </div>
@@ -141,5 +146,4 @@
         </div>
     </main>
 </body>
-
 </html>

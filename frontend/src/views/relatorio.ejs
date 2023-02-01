@@ -31,7 +31,7 @@
     </div>
 
     <main>
-        <div class="lista" style="margin-top: 2em;">
+        <div class="lista">
             <h3 class="title">
                 COMPONENTES DO DISPOSITIVO <br>
                 <%= computador.Name %>
@@ -48,8 +48,8 @@
                 <% } %>
         </div>
 
-        
-        <div class="right" style="margin-top: 2em;">
+
+        <div class="right">
             <div class="add_relatorio">
                 <h4 class="title">
                     <span>
@@ -70,7 +70,7 @@
 
                         <select name="Device" class="transição" style="margin-right: 10px; width: 38%;">
                             <option disabled selected>Dispositivo</option>
-                            <% for( let i = 0; i < computador.devices.length; i++ ) { %>
+                            <% for( let i=0; i < computador.devices.length; i++ ) { %>
                                 <option value="<%= computador.devices[i].ID %>">
                                     <%= computador.devices[i].Name %>
                                 </option>
@@ -79,12 +79,15 @@
                     </div>
 
                     <div class="line">
-                        <input name="EDV" type="text" class="transição" placeholder="EDV:" required="required" minlength="8" maxlength="8">
-                        <input name="CPF" type="text" class="transição" id="cpf" onkeypress="mascara()" placeholder="CPF:" required="required">
+                        <input name="EDV" type="text" class="transição" placeholder="EDV:" required="required"
+                            minlength="8" maxlength="8">
+                        <input name="CPF" type="text" class="transição" id="cpf" onkeypress="mascara()"
+                            placeholder="CPF:" required="required">
                     </div>
 
                     <div class="line">
-                        <textarea name="Description" placeholder="Descrição:" required="required" maxlength="200"></textarea>
+                        <textarea name="Description" placeholder="Descrição:" required="required"
+                            maxlength="200"></textarea>
                     </div>
 
                     <div class="line">
@@ -92,7 +95,7 @@
                     </div>
                 </form>
             </div>
-            
+
             <div class="tds_relatorios">
                 <h4 class="title" style="align-items: center;">
                     <i class="fas fa-tty" style="color: black; margin-right: .5em; font-size: 3rem;"></i>
@@ -108,61 +111,93 @@
                 </form>
 
 
-                <% for( let i = 0; i < logs.length; i++ ) { %>
+
+
+                <% for( let i=0; i < logs.length; i++ ) { %>
                     <div class="relatorio" id="<%=logs[i].Type%>">
                         <div class="esquerda_relatorio">
-                            <h5 class="nome"><%= logs[i].Description %></h5>
+                            <h5 class="nome">
+                                <%= logs[i].Description %>
+                            </h5>
                         </div>
+
                         <div class="direita_relatorio">
-                            <span style=" margin-right: 1em; font-size: 15px;"><%= logs[i].Device %></span>
-                            <div class="circle"> <span class="tooltiptext">Data: <%= logs[i].createdAt %> <br> Usuário: <%= logs[i].User %></span>
+                            <span style=" margin-right: 1em; font-size: 15px;">
+                                <%= logs[i].Device %>
+                            </span>
+                            <span class="tooltiptext"
+                                title="Data: <%= logs[i].createdAt %> <br> Usuário: <%= logs[i].User %>">
+                                <div class="circle"></div>
+                            </span>
+                        </div>
+                    </div>
+                    <% } %>
+
+
+                        <div class="relatorio" id="Médio">
+                            <div class="esquerda_relatorio">
+                                <!-- <div class="finalizado">
+                                    <i class="far fa-check-circle"></i>
+                                    <h5 class="nome">Monitor Piscando</h5>
+                                </div> -->
+                                <div class="pendente">
+                                    <p data-tooltip="Finalizar"><i class="far fa-times-circle adm"></i></p>
+                                    <h5 class="nome">Monitor Piscando</h5>
+                                </div>
+                            </div>
+
+                            <div class="meio_relatorio">
+                                <p>01/01/2001 <br> Usuário: 454646374</p>
+                            </div>
+                            <div class="direita_relatorio">
+                                <span style="font-size: 15px;">Teclado</span>
+                                <div class="circle"></div>
                             </div>
                         </div>
-                    </div>
-                <% } %>
 
+                        <div class="relatorio" id="Grave">
+                            <div class="esquerda_relatorio">
+                                <div class="finalizado">
+                                    <i class="far fa-check-circle"></i>
+                                    <h5 class="nome">Monitor Piscando</h5>
+                                </div>
+                                <!-- <div class="pendente">
+                                    <p data-tooltip="Finalizar"><i class="far fa-times-circle adm"></i></p>
+                                    <h5 class="nome">Monitor Piscando</h5>
+                                </div> -->
+                            </div>
 
-                <!-- <div class="relatorio" id="Médio">
-                    <div class="esquerda_relatorio">
-                        <i class="fas fa-clipboard-check" id="concluir"><span class="tooltiptext">Marcar como
-                                concluido</span></i>
-                        <h5 class="nome">Monitor Piscando</h5>
-                    </div>
-
-                    <div class="direita_relatorio">
-                        <span style=" margin-right: 1em; font-size: 15px;">Monitor</span>
-                        <div class="circle"> <span class="tooltiptext">Data: 25/01/2023 <br> Usuário: 92900544</span>
+                            <div class="meio_relatorio">
+                                <p>01/01/2001 <br> Usuário: 454646374</p>
+                            </div>
+                            <div class="direita_relatorio">
+                                <span style="font-size: 15px;">Teclado</span>
+                                <div class="circle"></div>
+                            </div>
                         </div>
-                    </div>
 
-                </div> -->
-<!-- 
-                <div class="relatorio" id="Grave">
-                    <div class="esquerda_relatorio">
-                        <i class="fas fa-clipboard-check" id="concluir"><span class="tooltiptext">Marcar como
-                                concluido</span></i>
-                        <h5 class="nome">Scroll do mouse com problema</h5>
-                    </div>
-                    <div class="direita_relatorio">
-                        <span style=" margin-right: 1em; font-size: 15px;"> Mouse</span>
-                        <div class="circle"><span class="tooltiptext">Data: 25/01/2023 <br> Usuário: 92900544</span>
+                        <div class="relatorio" id="Simples">
+                            <div class="esquerda_relatorio">
+                                <!-- <div class="finalizado">
+                                    <i class="far fa-check-circle"></i>
+                                    <h5 class="nome">Monitor Piscando</h5>
+                                </div> -->
+                                <div class="pendente">
+                                    <p data-tooltip="Finalizar"><i class="far fa-times-circle adm"></i></p>
+                                    <h5 class="nome">Monitor Piscando</h5>
+                                </div>
+                            </div>
+
+                            <div class="meio_relatorio">
+                                <p>01/01/2001 <br> Usuário: 454646374</p>
+                            </div>
+                            <div class="direita_relatorio">
+                                <span style="font-size: 15px;">Teclado</span>
+                                <div class="circle"></div>
+                            </div>
                         </div>
-                    </div>
-                </div>
 
-                <div class="relatorio" id="Simples">
-                    <div class="esquerda_relatorio">
-                        <i class="fas fa-clipboard-check" id="concluir"><span class="tooltiptext">Marcar como
-                                concluido</span></i>
-                        <h5 class="nome">Tecla space falha</h5>
-                    </div>
-                    <div class="direita_relatorio">
-                        <span style=" margin-right: 1em; font-size: 15px;">Teclado</span>
-                        <div class="circle"><span class="tooltiptext">Data: 25/01/2023 <br> Usuário: 92900544</span>
-                        </div>
-                    </div>
 
-                </div> -->
             </div>
 
 

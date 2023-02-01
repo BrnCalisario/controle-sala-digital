@@ -49,19 +49,44 @@ main {
 }
 
 
+
+.item .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: rgba(43, 43, 43, 0.952);
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+    font-size: 12px;
+    align-items: center;
+    float: right;
+    -webkit-transition: 0.2s;
+    transition: 0.2s;
+
+}
+
+
+.item:hover .tooltiptext {
+    margin-left: 1em;
+    margin-top: -.8em;
+    visibility: visible;
+}
+
+
 .lista::-webkit-scrollbar {
     width: 16px;
-  }
+}
 
-  .lista::-webkit-scrollbar-track {
+.lista::-webkit-scrollbar-track {
     background: #eaebeb;
-  }
+}
 
-  .lista::-webkit-scrollbar-thumb {
+.lista::-webkit-scrollbar-thumb {
     background-color: #111B35;
     border-radius: 12px;
     border: 2px outset #111B35;
-  }
+}
 
 
 
@@ -81,7 +106,7 @@ main {
     width: 100%;
     background-color: black;
     color: white;
-    height: 60%;
+    height: 54%;
 }
 
 .line {
@@ -165,7 +190,7 @@ textarea:focus {
     border: solid 1px lightgray;
     border-radius: 5px;
     width: 100%;
-    height: 28%;
+    height: 34%;
     overflow-y: scroll;
     scrollbar-width: auto;
     scrollbar-color: #5C8EF2 #eaebeb;
@@ -174,17 +199,17 @@ textarea:focus {
 
 .tds_relatorios::-webkit-scrollbar {
     width: 16px;
-  }
+}
 
-  .tds_relatorios::-webkit-scrollbar-track {
+.tds_relatorios::-webkit-scrollbar-track {
     background: #eaebeb;
-  }
+}
 
-  .tds_relatorios::-webkit-scrollbar-thumb {
+.tds_relatorios::-webkit-scrollbar-thumb {
     background-color: #111B35;
     border-radius: 12px;
     border: 2px outset #111B35;
-  }
+}
 
 
 .relatorio {
@@ -203,58 +228,117 @@ textarea:focus {
 .direita_relatorio {
     display: flex;
     align-items: center;
+    float: right;
+    justify-content: end;
+    width: 30%;
+}
+
+.finalizado
+{
+    display: flex;
+    align-items: center;
+}
+
+.finalizado i
+{
+    font-size: 30px;
+    margin-right: .3em;
+    padding: .3em;
+}
+
+.pendente
+{
+    display: flex;
+    align-items: center;
 }
 
 .esquerda_relatorio {
     display: flex;
     align-items: center;
+    float: left;
+    width: 36%;    
 }
 
-#concluir {
-    margin-right: .5em;
+
+.meio_relatorio
+{
+    font-size: 15px;
+    opacity: .5;
+    width: 30%;
+    text-align: center;
+    align-items: center;
+}
+
+
+.adm{
+    margin-right: .3em;
     padding: .3em;
+    color: rgb(197, 38, 38);
+    font-size: 30px;
 
 }
 
-#concluir:hover {
+.adm:hover {
     color: rgb(12, 211, 12);
     -webkit-transition: 0.8s;
     transition: 0.8s;
 }
 
+#concluir{
+    margin-right: .3em;
+    padding: .3em;
+    color: rgb(197, 38, 38);
+    font-size: 30px;
 
-#concluir .tooltiptext {
+}
+
+
+
+[data-tooltip] {
+    --arrow-size: 2px;
+    position: relative;
+    z-index: 10;
+}
+
+
+[data-tooltip]:before,
+[data-tooltip]:after {
+    position: absolute;
     visibility: hidden;
-    width: 120px;
-    background-color: rgba(43, 43, 43, 0.952);
+    opacity: 0;
+    left: 50%;
+    bottom: calc(100% + var(--arrow-size));
+    pointer-events: none;
+    transition: 0.2s;
+    will-change: transform;
+}
+
+[data-tooltip]:before {
+    content: attr(data-tooltip);
+    padding: 10px 18px;
+    min-width: 50px;
+    max-width: 300px;
+    width: max-content;
+    width: -moz-max-content;
+    border-radius: 6px;
+    font-size: 14px;
+    background-color: rgba(0, 0, 0, 0.9);
     color: #fff;
     text-align: center;
-    padding: 5px 0;
-    border-radius: 6px;
-    font-size: 12px;
-    align-items: center;
-    position: absolute;
-    z-index: 1;
-    -webkit-transition: 0.2s;
-    transition: 0.2s;
+    transform: translate(-50%, calc(0px - var(--arrow-size))) scale(0.5);
 }
 
 
-#concluir:hover .tooltiptext {
+[data-tooltip]:hover:before,
+[data-tooltip]:hover:after {
     visibility: visible;
-    margin-top: -3em;
-    margin-left: -3em;
+    opacity: 1;
 }
 
-
-
-
-
-
-
-
-
-
+[data-tooltip]:hover:before {
+    transition-delay: 0.3s;
+    transform: translate(-50%, calc(0px - var(--arrow-size))) scale(1);
+}
 
 
 #retorno_relatorio {
@@ -282,6 +366,8 @@ textarea:focus {
 
 
 /* ----------------------------------------------------------------------- */
+
+
 #Grave {
     border-color: crimson;
 }
@@ -299,6 +385,7 @@ textarea:focus {
     background-color: #fff;
     color: #fff;
     padding: .6em;
+    margin-left: 1em;
     box-shadow: inset 0 0 0.5em 0 crimson, 0 0 0.5em 0 crimson;
 
 }
@@ -322,137 +409,81 @@ textarea:focus {
 }
 
 
-.circle .tooltiptext {
-    visibility: hidden;
-    width: 120px;
-    background-color: rgba(43, 43, 43, 0.952);
-    color: #fff;
-    text-align: center;
-    padding: 5px 0;
-    border-radius: 6px;
-    font-size: 12px;
-    align-items: center;
-    position: absolute;
-    z-index: 1;
-}
-
-
-.circle:hover .tooltiptext {
-    visibility: visible;
-}
-
-
-
-.item .tooltiptext {
-    visibility: hidden;
-    width: 120px;
-    background-color: rgba(43, 43, 43, 0.952);
-    color: #fff;
-    text-align: center;
-    padding: 5px 0;
-    border-radius: 6px;
-    font-size: 12px;
-    align-items: center;
-    position: absolute;
-    z-index: 1;
-    -webkit-transition: 0.2s;
-    transition: 0.2s;
-
-}
-
-
-.item:hover .tooltiptext {
-    margin-left: 1em;
-    margin-top: -.8em;
-    visibility: visible;
-}
-
-
-
-.item .tooltiptext::after {
-    content: " ";
-    position: absolute;
-    top: 50%;
-    right: 100%;
-    /* To the left of the tooltip */
-    margin-top: -5px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: transparent black transparent transparent;
-}
-
-
-
 
 
 @media (max-width: 1400px) {
 
-    .title
-    {
+    .title {
         font-size: 25px;
     }
 
-    .add_relatorio
-    {
-        height: 50%;
+    .right {
+        margin-top: 2em !important;
     }
 
-    .transição 
-    {
+    .add_relatorio {
+        height: 45%;
+    }
+
+    .transição {
         width: 34%;
-        font-size: 12px;
+        font-size: 10px;
     }
 
-    textarea
-    {
-        font-size: 12px;
+    textarea {
+        font-size: 10px;
     }
 
 
-    #enviar
-    {
-        font-size: 18px;
+    #enviar {
+        font-size: 15px;
+        margin-top: -1em;
     }
 
-    .lista
-    {
+    .lista {
+        margin-top: 2em !important;
         height: 96%;
     }
 
-    .lista .title
-    {
+    .lista .title {
         font-size: 20px;
     }
 
-    .item
-    {
+    .item {
         font-size: 15px;
     }
 
-    .tds_relatorios .title
-    {
+    .tds_relatorios .title {
         font-size: 20px;
     }
 
-    .tds_relatorios i
-    {
-        font-size: 2em !important;
+    .tds_relatorios i {
+        font-size: 1.5em !important;
     }
 
-    #retorno_relatorio
-    {
+
+    #retorno_relatorio {
         font-size: 12px !important;
     }
 
-    .relatorio
-    {
+    .relatorio {
         font-size: 15px;
         padding: .5em;
     }
 
-    .relatorio i
-    {
+    .relatorio i {
         font-size: 1em !important;
     }
-    
+
+    .circle .tooltip
+    {
+        font-size: 8px;
+        top: -180%;
+        left: -5%;
+    }
+
+    .meio_relatorio
+    {
+        font-size: 10px;
+    }
 }
