@@ -52,7 +52,7 @@
             </div>
 
             <form action="/adm/usuarios" method="POST">
-                <div class="line">
+                <div class="line" id="first">
                     <input name="Name" type="text" class="transition" placeholder="Nome :" required="required" minlength="2">
                     <input name="Name2" type="text" class="transition" placeholder="Sobrenome :" required="required" minlength="2">
                 </div>
@@ -62,7 +62,7 @@
                 </div>
                 <div class="line">
                     <input name="Role" type="text" class="transition" placeholder="Cargo: " required="required" minlength="4">
-                    <select name="Shift" class="transition" style="width: 44%;" required="required">
+                    <select name="Shift" class="transition" style="width: 43%;" required="required">
                         <option value="Turno" selected disabled>Turno :</option>
                         <option value="Manhã">Manhã</option>
                         <option value="Tarde">Tarde</option>
