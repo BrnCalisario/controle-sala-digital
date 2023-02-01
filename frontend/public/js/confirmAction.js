@@ -1,11 +1,7 @@
-const deleteFunction = (event, id) => {
-    console.log(id)
+const deleteFunction = (event) => {
     event.preventDefault()
     if (window.confirm("Tem certeza que deseja remover este componente ?")) {
         const form = document.getElementById('deleteForm')
-        form.action = "/adm/removeDevice/" + id
         form.submit()
     }
-        
-    
 } 

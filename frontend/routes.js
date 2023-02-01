@@ -4,6 +4,7 @@ import { Router } from 'express'
 import homeController from './src/controllers/homeController.js'
 import adminController from './src/controllers/adminController.js'
 import computerController from './src/controllers/computerController.js'
+import deviceController from './src/controllers/deviceController.js'
 
 const router = new Router()
 
@@ -30,16 +31,17 @@ router.post('/adm/usuarios', adminController.insertUser)
 // CADASTRO DE COMPUTADORES
 router.get('/adm/computador/cadastrar/:pos', computerController.getComputerCreate)
 router.post('/adm/computador/cadastrar/:pos', computerController.insertComputer)
-// router.post('/adm/computador/delete/:pos', computerController.insertComputer)
-
+router.post('/adm/computador/editar/:pos', computerController.getComputerEditor)
+router.post('/adm/computador/editar/:pos/edit', computerController.updateComputer)
+router.post('/adm/removeComputer/:pos', computerController.deleteComputer)
 
 // CADASTRO DE COMPONENTES
 router.get('/adm/computador/:pos', computerController.getComputerDevice)
-router.post('/adm/computador/:pos', computerController.createDevice)
+router.post('/adm/computador/:pos', deviceController.createDevice)
 
-router.post('/adm/editDevice/:pos', computerController.getDeviceEditor)
-router.post('/adm/editDevice/:pos/edit', computerController.updateDevice)
-router.post('/adm/removeDevice/:pos', computerController.deleteDevice)
+router.post('/adm/editDevice/:pos/', deviceController.getDeviceEditor)
+router.post('/adm/editDevice/:pos/edit', deviceController.updateDevice)
+router.post('/adm/removeDevice/:pos/', deviceController.deleteDevice)
 
 
 router.get('/*', (req, res) => {

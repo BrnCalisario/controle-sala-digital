@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../../css/controles.css">
     <link rel="stylesheet" href="../../../css/header.css">
-
+    <script src="../../../js/confirmAction.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
         integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -38,20 +38,29 @@
     <main>
         <div class="lista">
             <h3 class="title">Computadores Cadastrados</h3>
-            <% for (var i = 0; i < computadores.length; i++) { %>
-                <div class="item">
-                    <h3 class="info1"><%=computadores[i].Name%></h3>
-                    <h3 class="info2">Posição: <%=computadores[i].SpotPosition%></h3>
-                </div>
-            <% } %>
+            <% for (var i=0; i < computadores.length; i++) { %>
+                <form action="/adm/computador/editar/<%= computadores[i].SpotPosition %>" onclick="this.submit()"
+                    method="POST">
+                    <input type="text" class="some" name="Name" value="<%= computadores[i].Name %>">
+                    <input type="text" class="some" name="Brand" value="<%= computadores[i].Brand %>">
+                    <input type="text" class="some" name="Description" value="<%= computadores[i].Description %>">
+                    <div class="item">
+                        <h3 class="info1">
+                            <%=computadores[i].Name%>
+                        </h3>
+                        <h3 class="info2">Posição: <%=computadores[i].SpotPosition%>
+                        </h3>
+                    </div>
+                </form>
+                <% } %>
         </div>
 
 
-        
-    <!---------------------------------------------------------------------------------------------------------->
 
-     <!-- CADASTRAR COMPUTADOR -->
-        <div class="cadastrar">
+        <!---------------------------------------------------------------------------------------------------------->
+
+        <!-- CADASTRAR COMPUTADOR -->
+        <div class=<%=edit ? 'some' : 'cadastrar' %> >
             <div class="title">
                 <i style="color:white; font-size: 5rem; margin-bottom: .4em;" class="fas fa-laptop-medical"></i>
                 <h3 class="title">Cadastrar Computador</h3>
@@ -59,22 +68,23 @@
 
             <form action="/adm/computador/cadastrar/<%= posicaoSelecionada %> " method="post">
                 <div class="line">
-                    <input name="Name" type="text" class="transition" style="width: 68%;" placeholder="Nome" required="required"
-                        minlength="6">
+                    <input name="Name" type="text" class="transition" style="width: 68%;" placeholder="Nome"
+                        required="required" minlength="6">
                 </div>
                 <div class="line">
-                    <input name="Brand" type="text" class="transition" style="width: 68%;" placeholder="Marca" required="required"
-                        minlength="2">
+                    <input name="Brand" type="text" class="transition" style="width: 68%;" placeholder="Marca"
+                        required="required" minlength="2">
                 </div>
                 <div class="line">
-                    <input name="Model" type="text" class="transition" style="width: 68%;" placeholder="Modelo" required="required"
-                        minlength="2">
+                    <input name="Model" type="text" class="transition" style="width: 68%;" placeholder="Modelo"
+                        required="required" minlength="2">
                 </div>
 
-                <div class="item" style="width: 38%; margin: 0 auto;padding: 1em; justify-content: center;" >
-                    <p style="text-align: center;">Posição selecionada: <%= posicaoSelecionada %></p>
+                <div class="item" style="width: 38%; margin: 0 auto;padding: 1em; justify-content: center;">
+                    <p style="text-align: center;">Posição selecionada: <%= posicaoSelecionada %>
+                    </p>
                 </div>
-                
+
                 <div class="line" id="line" style="margin-top: 2em;">
                     <button type="submit" value="Cadastrar" style="margin-top: 0;">Cadastrar</button>
                 </div>
@@ -84,37 +94,43 @@
 
 
 
-         <!-- EDITAR COMPUTADOR -->
-       <!-- <div class="cadastrar">
+        <!-- EDITAR COMPUTADOR -->
+        <div class=<%=edit ? 'cadastrar' : 'some' %>>
             <div class="title">
                 <i style="color:white; font-size: 5rem; margin-bottom: .3em;" class="fas fa-laptop-medical"></i>
                 <h3 class="title">Editar Computador</h3>
             </div>
 
-            <form action="/adm/computador/cadastrar/<%= posicaoSelecionada %> " method="post">
+            <form action="/adm/computador/editar/<%= posicaoSelecionada %>/edit" method="post">
                 <div class="line">
-                    <input name="Name" type="text" class="transition" style="width: 68%;" placeholder="Nome" required="required"
-                        minlength="6">
+                    <input name="Name" class="some" value="<%= edit ? values.Name : '' %>">
+                    <input disabled name="Name" type="text" class="transition" style="width: 68%;" placeholder="Nome"
+                        required="required" minlength="6" value="<%= edit ? values.Name : '' %>">
                 </div>
                 <div class="line">
-                    <input name="Brand" type="text" class="transition" style="width: 68%;" placeholder="Marca" required="required"
-                        minlength="2">
+                    <input name="Brand" type="text" class="transition" style="width: 68%;" placeholder="Marca"
+                        required="required" minlength="2" value="<%= edit ? values.Brand : '' %>">
                 </div>
                 <div class="line">
-                    <input name="Model" type="text" class="transition" style="width: 68%;" placeholder="Modelo" required="required"
-                        minlength="2">
+                    <input name="Description" type="text" class="transition" style="width: 68%;" placeholder="Modelo"
+                        required="required" minlength="2" value="<%= edit ? values.Description : '' %>">
                 </div>
 
-                <div class="item" style="width: 38%; margin: 0 auto;padding: 1em; justify-content: center;" >
-                    <p style="text-align: center;">Posição selecionada: <%= posicaoSelecionada %></p>
+                <div class="item" style="width: 38%; margin: 0 auto;padding: 1em; justify-content: center;">
+                    <p style="text-align: center;">Posição selecionada: <%= posicaoSelecionada %>
+                    </p>
                 </div>
-                
+
                 <div class="line" id="line" style="margin-top: 2em;">
                     <button type="submit" value="Cadastrar" style="margin-top: 0;">Editar</button>
-                    <button type="submit" value="Cadastrar" id="excluir"  style="margin-top: 0;">Excluir</button>
+                    <button onclick="deleteFunction(event)" value="Cadastrar" id="excluir" style="margin-top: 0;">Excluir</button>
                 </div>
             </form>
-        </div> -->
+
+            <form id="deleteForm" name="delete" action="/adm/removeComputer/<%= posicaoSelecionada %>" method="POST">
+
+            </form>
+        </div>
 
     </main>
 

@@ -33,7 +33,7 @@ class adminController {
     async getUserCreate(req, res) {
         await axios.get('/user')
             .then(response => {
-                console.log(response.data)
+
                 return res.render('../views/admUsuarios', { usuarios: response.data })
             })
             .catch(error => {
@@ -52,7 +52,7 @@ class adminController {
             Shift: data.Shift,
             CPF: data.CPF.replaceAll('.', '').replace('-', '')
         }).then(response => {
-            return res.redirect('/adm')
+            return res.redirect('/adm/usuarios')
         })
         .catch(error => {
             res.redirect('/error')

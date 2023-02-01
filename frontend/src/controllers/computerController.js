@@ -4,20 +4,24 @@ import axios from '../config/axios.js'
 class computerController {
     async getComputerCreate(req, res) {
         const pos = req.params.pos
-
         await axios.get('/computer')
             .then(response => {
                 const spotList = response.data.map(pc => pc.SpotPosition)
-                if (spotList.filter(s => s == pos).length > 0) {
+                
+                if (spotList.filter(s => s == pos).length > 0)
                     throw new Error("Lugar já está sendo ocupado")
-                }
 
-                const pcList = response.data.sort(pc => pc.createdAt)
+                const pcList = response.data.sort(pc => pc.SpotPosition)
 
-                res.render('../views/admComputadores', { computadores: response.data, posicaoSelecionada: pos })
+                res.render('../views/admComputadores', {
+                    computadores: response.data,
+                    posicaoSelecionada: pos,
+                    edit: false,
+                    values: null
+                })
             })
             .catch(error => {
-                res.redirect("/error")
+                res.redirect("/erro")
             })
     }
 
@@ -33,62 +37,67 @@ class computerController {
                     Name: "Este Computador",
                     Brand: data.Brand,
                     Description: data.Model,
-                    Computer: data.Name
+                    Computer: data.Name,
+                    isMainDevice: true,
                 })
                 return res.redirect('/adm')
             })
             .catch(error => {
-                res.redirect('/error')
+                res.redirect('/erro')
             })
     }
 
     async getComputerDevice(req, res) {
         await axios.get('/computer/fullStats/' + req.params.pos)
             .then(response => {
-                res.render('../views/addComponente', { computador: response.data.pc, edit: false, values: null })
+                res.render('../views/addComponente', {
+                    computador: response.data.pc,
+                    edit: false,
+                    values: null
+                })
             })
             .catch(error => {
                 res.redirect('/erro')
             })
     }
 
-    async createDevice(req, res) {
-        await axios.post('/device/', req.body)
-            .then(response => {
-                res.redirect(req.originalUrl)
+    async getComputerEditor(req, res) {
+        const pos = req.params.pos
+        await axios.get('/computer')
+            .then(async response => {
+                
+                const selectedPc = await axios.get('/computer/' + req.params.pos)
+                const pcList = response.data.sort(pc => pc.SpotPosition)
+
+                res.render('../views/admComputadores', {
+                    computadores: pcList,
+                    posicaoSelecionada: pos,
+                    edit: true,
+                    values: { Name: selectedPc.data.Name, Brand: selectedPc.data.mainDevice.Brand ,Description: selectedPc.data.mainDevice.Description}
+                })
             })
             .catch(error => {
-                res.redirect('/erro')
+                console.log(error)
+                console.log(error.response)
+                res.redirect("/adm")
             })
     }
 
-    async getDeviceEditor(req, res) {
-        await axios.get('/computer/fullStats/' + req.params.pos)
-            .then(response => {
-                console.log(req.body)
-                res.render('../views/addComponente', { computador: response.data.pc, edit: true, values: req.body })
-            })
-            .catch(error => {
-                res.redirect('/erro')
-            })
-    }
-    
-    async updateDevice(req, res) {
-        console.log(req.body)
-        await axios.put('/device/', req.body)
+    async updateComputer(req, res) {
+        await axios.put('/computer/', req.body)
             .then(response => {
                 res.redirect('/adm/computador/' + req.params.pos)
             })
             .catch(error => {
-                console.log('erro')
+                console.log(error.response)
                 res.redirect('/erro')
             })
     }
 
-    async deleteDevice(req, res) {
-        await axios.delete('/device/', { ID: req.body.ID})
+    async deleteComputer(req, res) {
+        await axios.delete('/computer/' + req.params.pos)
             .then(response => {
-                res.redirect('/adm/computador/' + req.params.pos )
+                res.redirect('/adm')
             })
             .catch(error => {
                 res.redirect('/erro')

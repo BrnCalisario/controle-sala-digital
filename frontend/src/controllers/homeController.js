@@ -19,7 +19,6 @@ class HomeController {
     async getLog(req, res) {
         await axios.get('/computer/fullStats/' + req.params.pos)
             .then(response => {
-                console.log(response.data)
 
                 var myLogs = response.data.allLogs
                 myLogs = myLogs.map((l) => {
@@ -27,8 +26,6 @@ class HomeController {
                     l.createdAt = date[2] + "/" + date[1] + "/" + date[0]
                     return l
                 })
-
-                console.log(myLogs)
 
                 return res.render('../views/relatorio', { computador: response.data.pc, logs: response.data.allLogs})
             })
@@ -42,7 +39,6 @@ class HomeController {
 
         data.CPF = data.CPF.replaceAll ('.', '').replace('-', '')
 
-        console.log(data)
         if (!data.Type || !data.Device) 
             return res.redirect('/erro')
         
