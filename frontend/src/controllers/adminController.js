@@ -1,5 +1,6 @@
 import { response } from 'express'
 import axios from '../config/axios.js'
+import formatCPF from '../config/formatCPF.js'
 
 class adminController {
     async getLogin(req, res) {
@@ -33,8 +34,11 @@ class adminController {
     async getUserCreate(req, res) {
         await axios.get('/user')
             .then(response => {
-
-                return res.render('../views/admUsuarios', { usuarios: response.data })
+                return res.render('../views/admUsuarios', {
+                    usuarios: response.data,
+                    edit: false,
+                    values: { Shift: ''}
+                })
             })
             .catch(error => {
                 return res.redirect('/erro')
@@ -54,10 +58,45 @@ class adminController {
         }).then(response => {
             return res.redirect('/adm/usuarios')
         })
-        .catch(error => {
-            res.redirect('/error')
-        })
+            .catch(error => {
+                res.redirect('/error')
+            })
+    }
 
+    async getUserEditor(req, res) {
+        await axios.get('/user')
+            .then(response => {
+
+                console.log(req.body)
+                const splited = req.body.Name.split(' ')
+                const firstName = splited[0]
+                splited.shift()
+                const lastName = splited.join(' ')
+
+                const userInfo = {
+                    Name: firstName,
+                    Name2: lastName,
+                    EDV: req.body.EDV,
+                    CPF: formatCPF(req.body.CPF),
+                    Role: req.body.Role,
+                    Shift: req.body.Shift
+                }
+                console.log(userInfo)
+
+                return res.render('../views/admUsuarios', {
+                    usuarios: response.data,
+                    edit: true,
+                    values: userInfo
+                })
+            })
+            .catch(error => {
+                console.log(error)
+                res.redirect('/error')
+            })
+    }
+
+    async updateUser(req, res) {
+        await axios.put('/user')
     }
 }
 

@@ -6,6 +6,6 @@ const router = new Router();
 
 router.get('/', userController.getAll)
 router.post('/', userController.create)
-
+router.put('/', userController.update)
 
 export default router
