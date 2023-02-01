@@ -7,6 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../css/header.css">
     <link rel="stylesheet" href="../../css/add_componente.css">
+    
+    <script src="../../js/confirmAction.js"></script>
+
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
         integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -31,41 +35,30 @@
     <main>
         <div class="lista">
             <h3 class="title">
-                COMPONENTES DO DISPOSITIVO: <br> CTPC3525
+                COMPONENTES DO DISPOSITIVO <br>
+                <%= computador.Name %>
             </h3>
 
-            <!-- <div class="item">
-                Mouse
-                <span class="tooltiptext">
-                    <b>Marca:</b> HP
-                    <br>
-                    <b>Modelo: </b>Sla
-                </span>
-            </div>
-            <div class="item">
-                Teclado
-                <span class="tooltiptext">
-                    <b>Marca:</b> HP
-                    <br>
-                    <b>Modelo: </b>SK-2120
-                </span>
-            </div>
-            <div class="item">
-                Monitor1
-                <span class="tooltiptext">
-                    <b>Marca:</b> Sansung
-                    <br>
-                    <b>Modelo: </b>Sla
-                </span>
-            </div>
-            <div class="item">
-                Monitor2
-                <span class="tooltiptext">
-                    <b>Marca:</b> Sansung
-                    <br>
-                    <b>Modelo: </b>Sla
-                </span>
-            </div> -->
+            <% for( let i=0; i < computador.devices.length; i++ ) { %>
+                <form action="/adm/editDevice/<%= computador.SpotPosition %>" onclick="this.submit()" method="POST">
+                    <div class="item">
+                        <input style="display: none;" name="ID" value="<%=computador.devices[i].ID%>">
+                        <input style="display: none;" name="Device" value="<%=computador.devices[i].Name%>">
+                        <input style="display: none;" name="Brand" value="<%=computador.devices[i].Brand%>">
+                        <input style="display: none;" name="Description" value="<%=computador.devices[i].Description%>">
+                        <p>
+                            <%= computador.devices[i].Name %>
+                        </p>
+                        <span class="tooltiptext">
+                            <b>Marca: </b>
+                            <%= computador.devices[i].Brand %>
+                                <br>
+                                <b>Descrição: </b>
+                                <%= computador.devices[i].Description %>
+                        </span>
+                    </div>
+                </form>
+                <% } %>
         </div>
 
         <!---------------------------------------------------------------------------------------------->
@@ -77,25 +70,30 @@
             </div>
 
             <!-- CADASTRAR COMPONENTE -->
-            <div class="add_componente">
+            <div class=<%=edit ? "some" : "add_componente" %> >
                 <div class="title" style="margin-top: 1em;">
                     <h3 class="title">
-                        <i class="fas"></i>
-                        Cadastar Componente
+                        <i class="fas" style="color: white; font-size: 2em; margin-right: .3em;"></i>
+                        Cadastrar Componente
                     </h3>
                 </div>
 
-                <form action="" method="post">
+                <form action="/adm/computador/<%= computador.SpotPosition %>" method="post">
                     <div class="line">
-                        <input type="text" class="transição" placeholder="Nome :" required="required" minlength="6">
+                        <input name="Name" type="text" class="transição" placeholder="Nome :" required="required"
+                            minlength="3">
                     </div>
 
                     <div class="line">
-                        <input type="text" class="transição" placeholder="Marca :" required="required" minlength="2">
+                        <input name="Brand" type="text" class="transição" placeholder="Marca :" required="required"
+                            minlength="2">
                     </div>
                     <div class="line">
-                        <input type="text" class="transição" placeholder="Modelo :" required="required" minlength="2">
+                        <input name="Description" type="text" class="transição" placeholder="Modelo :"
+                            required="required" minlength="2">
                     </div>
+
+                    <input name="Computer" type="text" style="display: none;" value="<%=computador.Name%>">
 
                     <div class="line" style="margin-top: .5em; margin-bottom: 1em;">
                         <button type="submit" value="Cadastrar" id="enviar">Cadastrar</button>
@@ -109,8 +107,7 @@
 
 
             <!-- EDITAR COMPONENTE -->
-
-            <!-- <div class="add_componente">
+            <div class=<%=edit ? "add_componente" : "some" %>>
                 <div class="title" style="margin-top: 1em;">
                     <h3 class="title">
                         <i class="fas"></i>
@@ -118,41 +115,36 @@
                     </h3>
                 </div>
 
-                <form action="" method="post">
+
+                <form action="/adm/editDevice/<%= computador.SpotPosition %>/edit" method="POST">
+                    <input class="some" name="ID" value="<%= edit ? values.ID : '' %>">
                     <div class="line">
-                        <input type="text" class="transição" placeholder="Nome :" required="required" minlength="6">
+                        <input name="Name" type="text" class="transição" placeholder="Nome :" required="required"
+                            value="<%= edit ? values.Device : ""%>">
                     </div>
 
                     <div class="line">
-                        <input type="text" class="transição" placeholder="Marca :" required="required" minlength="2">
+                        <input name="Brand" type="text" class="transição" placeholder="Marca :" required="required"
+                            minlength="2" value="<%= edit ? values.Brand : ""%>">
                     </div>
                     <div class="line">
-                        <input type="text" class="transição" placeholder="Modelo :" required="required" minlength="2">
+                        <input name="Description" type="text" class="transição" placeholder="Modelo :"
+                            required="required" minlength="2" value="<%=edit ? values.Description : "" %>">
                     </div>
 
-                    <div class="line" style="margin-top: .5em; margin-bottom: 1em; margin-left: 36px;">
+
+                    <div class="line" style="margin-top: .5em; margin-bottom: 1em;">
                         <button type="submit" value="Cadastrar" id="enviar">Editar</button>
-                        <button type="submit" value="Cadastrar" id="excluir">Excluir</button>
+                        <button onclick="deleteFunction(event, computador.SpotPosition)" value="Cadastrar" id="excluir">Excluir</button>
                     </div>
-
                 </form>
 
-            </div> -->
-
-           
-
-
-
-
-
-
-            <!-- MOSTRAR RELATORIOS COMPONENTE -->
-            <!-- <div class="relatorios">
-
-            </div> -->
+                <form id="deleteForm" name="delete" action="" method="POST">
+                    <input class="some" value=<%= edit ? values.ID : '' %>">
+                </form>
+            </div>
 
         </div>
     </main>
 </body>
-
 </html>

@@ -44,7 +44,10 @@ a {
 }
 
 
-
+.some {
+    display: none;
+    visibility: hidden;
+}
 
 
 
