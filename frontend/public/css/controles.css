@@ -226,4 +226,9 @@ main {
         margin-top: 1em;
     }
 
+    #excluir
+    {
+        font-size: 15px;
+    }
+
 }
