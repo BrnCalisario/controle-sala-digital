@@ -24,28 +24,58 @@ class computerController {
         }
     }
 
-    async remove(req, res) {
-        const pos = req.body.SpotPosition
+    async update(req, res) {
+        console.log(req.body)
+        await device.update({
+            Brand: req.body.Brand,
+            Description: req.body.Description
+        }, { where: { Computer: req.body.Name } })
+            .then(response => {
+                return res.sendStatus(200)
+            }).catch(error => {
+                console.log(error)
+                return res.sendStatus(400)
+            })
+    }
 
-        computer.destroy({
-            where: { Name: req.body.Name }
+    async delete(req, res) {
+        const pos = req.params.pos
+
+        await computer.destroy({
+            where: { SpotPosition: pos }
+        }).then(response => {
+            device.destroy(({
+                where: { Computer: null }
+            }))
+
+            spot.update(
+                { Reserved: false },
+                { where: { Position: pos } }
+            )
+
+            return res.sendStatus(200)
         })
-
-        spot.update(
-            { Reserved: false },
-            { where: { SpotPosition: pos } }
-        )
+            .catch(error => {
+                console.log(error)
+                return res.sendStatus(400)
+            })
     }
 
     async getByPos(req, res) {
         const pc = await computer.findOne({
-            where: { SpotPosition: req.body.pos }
+            where: { SpotPosition: req.params.pos }
         })
+
+        const mainDevice = await device.findOne({
+            where: { Computer: pc.Name, isMainDevice: true }
+        })
+
+        pc.dataValues.mainDevice = mainDevice.dataValues
 
         if (pc === null)
             return res.sendStatus(404)
 
-        res.json(pc)
+        res.json(pc.dataValues)
     }
 
     async getFullStats(req, res) {
@@ -81,6 +111,8 @@ class computerController {
         const result = { pc, allLogs }
         res.json(result)
     }
+
+
 }
 
 export default new computerController()

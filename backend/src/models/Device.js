@@ -20,6 +20,11 @@ const device = database.define("Device", {
     Description: {
         type: Sequelize.STRING(200),
         allowNull: true
+    },
+    isMainDevice: {
+        type: Sequelize.BOOLEAN,
+        allowNull: false,
+        defaultValue: false
     }
 })
 

@@ -37,15 +37,15 @@ class DeviceController {
     }
 
     async delete(req, res) {
+        console.log(req.params.id)
         await device.destroy(
-            { where: { ID: req.body.ID } })
+            { where: { ID: req.params.id } })
             .then(result => {
                 return res.sendStatus(200)
             })
             .catch(err => {
                 return res.sendStatus(400)
             })
-        
     }
 
     async getByPC(req, res) {
