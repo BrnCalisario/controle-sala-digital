@@ -29,12 +29,15 @@ router.get('/adm/usuarios', adminController.getUserCreate)
 router.post('/adm/usuarios', adminController.insertUser)
 router.post('/adm/editUsuario', adminController.getUserEditor)
 router.post('/adm/editUsuario/edit', adminController.updateUser)
-
+router.post('/adm/editUsuario/delete/:edv', adminController.deleteUser)
 
 // CADASTRO DE COMPUTADORES
 router.get('/adm/computador/cadastrar/:pos', computerController.getComputerCreate)
 router.post('/adm/computador/cadastrar/:pos', computerController.insertComputer)
+
+router.get('/adm/computador/editar', computerController.getComputersEditor)
 router.post('/adm/computador/editar/:pos', computerController.getComputerEditor)
+
 router.post('/adm/computador/editar/:pos/edit', computerController.updateComputer)
 router.post('/adm/removeComputer/:pos', computerController.deleteComputer)
 

@@ -2,7 +2,7 @@ import user from '../models/User.js';
 
 class UserController {
     async getAll(req, res) {
-        const users = await user.findAll({where: {Active: true}})
+        const users = await user.findAll({ where: { Active: true } })
         res.json(users)
     }
 
@@ -14,7 +14,6 @@ class UserController {
             .catch(error => {
                 return res.sendStatus(400)
             })
-
     }
 
     async findByPk(req, res) {
@@ -32,6 +31,18 @@ class UserController {
                 return res.sendStatus(400)
             })
     }
+
+    async delete(req, res) {
+        await user.update(
+            { Active: false },
+            { where: { EDV: req.params.edv } }
+        ).then(response => {
+            return res.sendStatus(200)
+        })
+        .catch(error => {
+            return res.sendStatus(400)
+        })
+}
 
 
 }

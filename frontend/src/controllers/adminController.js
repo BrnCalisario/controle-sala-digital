@@ -47,7 +47,6 @@ class adminController {
 
     async insertUser(req, res) {
         const data = req.body
-        console.log(data)
 
         await axios.post('/user', {
             EDV: data.EDV,
@@ -67,7 +66,6 @@ class adminController {
         await axios.get('/user')
             .then(response => {
 
-                console.log(req.body)
                 const splited = req.body.Name.split(' ')
                 const firstName = splited[0]
                 splited.shift()
@@ -81,8 +79,7 @@ class adminController {
                     Role: req.body.Role,
                     Shift: req.body.Shift
                 }
-                console.log(userInfo)
-
+                
                 return res.render('../views/admUsuarios', {
                     usuarios: response.data,
                     edit: true,
@@ -90,7 +87,6 @@ class adminController {
                 })
             })
             .catch(error => {
-                console.log(error)
                 res.redirect('/error')
             })
     }
@@ -116,7 +112,7 @@ class adminController {
     }
 
     async deleteUser(req, res) {
-        await axios.delete('/user/' + req.params)
+        await axios.delete('/user/' + req.params.edv)
             .then(response => {
                 return res.redirect('/adm/usuarios')
             })

@@ -83,6 +83,26 @@ class computerController {
             })
     }
 
+    async getComputersEditor(req, res) {
+        await axios.get('/computer')
+            .then(response => {
+                
+                
+                const pcList = response.data.sort(pc => pc.SpotPosition)
+
+                res.render('../views/admComputadores', {
+                    computadores: pcList,
+                    posicaoSelecionada: null,
+                    edit: true,
+                    values: { Name: null, Brand: null ,Description: null}
+                })
+            })
+            .catch(error => {
+                console.log(error)
+                res.redirect("/adm")
+            })
+    }
+
     async updateComputer(req, res) {
         await axios.put('/computer', req.body)
             .then(response => {

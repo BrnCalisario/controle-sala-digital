@@ -1,4 +1,3 @@
-
 <html lang="en">
 
 <head>
@@ -34,7 +33,7 @@
         <div class="Loading-progress"></div>
     </div>
 
-    
+
     <h1 class="room-title">Sala Digital</h1>
     <div class="sala">
         <div class="frente">
@@ -43,18 +42,16 @@
             </div>
             <div class="images">
                 <a href="/adm/usuarios">
-                    <img
-                    src="https://static-00.iconduck.com/assets.00/user-circle-gear-icon-503x512-uknj3bht.png"
-                    id="img_user" style="margin-right: 1em;">
+                    <img src="https://static-00.iconduck.com/assets.00/user-circle-gear-icon-503x512-uknj3bht.png"
+                        id="img_user" style="margin-right: 1em;">
                 </a>
 
-                <a href="/adm/usuarios">
-                    <img
-                        src="https://img.myloview.com.br/posters/computer-gear-system-icon-simple-illustration-of-computer-gear-system-vector-icon-for-web-design-isolated-on-white-background-400-239947293.jpg"
+                <a href="/adm/computador/editar">
+                    <img src="https://img.myloview.com.br/posters/computer-gear-system-icon-simple-illustration-of-computer-gear-system-vector-icon-for-web-design-isolated-on-white-background-400-239947293.jpg"
                         id="img_user">
                 </a>
             </div>
-            
+
         </div>
         <div class="mesas">
             <section class="esquerdo">
@@ -63,18 +60,20 @@
                         <div class="desk mesa-esquerda">
                             <% if(posicoes[i] && i < posicoes.length) { %>
                                 <a href="/adm/computador/<%=i+1%>"><img class="pc" src="img/computadores/pc.png"></a>
-                            <% } else { %>
-                                <a href="/adm/computador/cadastrar/<%=i+1%>"><i class="add-btn fas fa-plus-circle"></i></a>
-                            <% } %>
-                                    <img src="img/computadores/mesa-esquerda.png" />
+                                <% } else { %>
+                                    <a href="/adm/computador/cadastrar/<%=i+1%>"><i
+                                            class="add-btn fas fa-plus-circle"></i></a>
+                                    <% } %>
+                                        <img src="img/computadores/mesa-esquerda.png" />
                         </div>
                         <div class="desk mesa-direita">
                             <% if(posicoes[i + 1] && (i + 1) < posicoes.length) { %>
                                 <a href="/adm/computador/<%=i+2%>"><img class="pc" src="img/computadores/pc.png"></a>
-                            <% } else { %>
-                                <a href="/adm/computador/cadastrar/<%=i+2%>"><i class="add-btn fas fa-plus-circle"></i></a>
-                            <% } %>
-                                    <img src="img/computadores/mesa-direita.png" />
+                                <% } else { %>
+                                    <a href="/adm/computador/cadastrar/<%=i+2%>"><i
+                                            class="add-btn fas fa-plus-circle"></i></a>
+                                    <% } %>
+                                        <img src="img/computadores/mesa-direita.png" />
                         </div>
                     </div>
                     <% } %>

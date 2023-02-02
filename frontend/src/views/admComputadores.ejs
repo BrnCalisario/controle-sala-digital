@@ -20,12 +20,10 @@
         <a href="/adm">
             <h1>SD Maintenance Log</h1>
         </a>
-        <div class="links">
-            <a href="controle_usuarios.html">Usuário</a>
-            <span>|</span>
-            <a href="controle_sala.html">Sala</a>
-        </div>
-
+        <a href="/" class="button">
+            <i class="fas fa-door-open"></i>
+            <div class="logout">LOGOUT</div>
+        </a>
     </header>
     <div class="Loading">
         <div class="Loading-progress"></div>
@@ -114,7 +112,12 @@
                 </div>
 
                 <div class="item" style="width: 38%; margin: 0 auto;padding: 1em; justify-content: center;">
-                    <p style="text-align: center;">Posição selecionada: <%= posicaoSelecionada %>
+                    <p style="text-align: center;">
+                        <% if (edit && !posicaoSelecionada) { %>
+                            Selecione um computador para editar
+                        <% } else {  %>
+                        Posição selecionada: <%= posicaoSelecionada %>
+                        <% } %>
                     </p>
                 </div>
 

@@ -11,7 +11,7 @@ class HomeController {
             })
             .catch(error => {
                 const pos = []
-                return res.render('../views/home', { posicoes: pos})
+                return res.render('../views/home', { posicoes: pos })
             })
     }
 
@@ -27,7 +27,7 @@ class HomeController {
                     return l
                 })
 
-                return res.render('../views/relatorio', { computador: response.data.pc, logs: response.data.allLogs})
+                return res.render('../views/relatorio', { computador: response.data.pc, logs: response.data.allLogs })
             })
             .catch(error => {
                 res.render('../views/notFound')
@@ -37,16 +37,16 @@ class HomeController {
     async insertLog(req, res) {
         var data = req.body
 
-        data.CPF = data.CPF.replaceAll ('.', '').replace('-', '')
+        data.CPF = data.CPF.replaceAll('.', '').replace('-', '')
 
-        if (!data.Type || !data.Device) 
+        if (!data.Type || !data.Device)
             return res.redirect('/erro')
-        
+
         await axios.post('/log', data)
             .then(response => {
                 res.redirect(req.originalUrl)
             })
-            .catch(error => {
+            .catch(error => {             
                 res.redirect('/erro')
             })
 

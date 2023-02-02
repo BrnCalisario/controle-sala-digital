@@ -24,13 +24,12 @@
         <a href="/adm">
             <h1>SD Maintenance Log</h1>
         </a>
-        <div class="links">
-            <a href="controle_computadores.html">Computador</a>
-            <span>|</span>
-            <a href="controle_sala.html">Sala</a>
-        </div>
-
+        <a href="/" class="button">
+            <i class="fas fa-door-open"></i>
+            <div class="logout">LOGOUT</div>
+        </a>
     </header>
+    
     <div class="Loading">
         <div class="Loading-progress"></div>
     </div>
@@ -121,8 +120,7 @@
                 </div>
             </form>
 
-            <form id="deleteForm" name="delete" action="/" method="GET">
-                <input name="ID" class="some" value="">
+            <form id="deleteForm" name="delete" action="/adm/editUsuario/delete/<%= edit ? values.EDV : '' %>" method="POST">
             </form>
         </div>
     </main>

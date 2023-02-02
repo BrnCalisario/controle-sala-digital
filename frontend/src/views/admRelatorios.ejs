@@ -14,6 +14,7 @@
 
     <title>Relatorio</title>
 </head>
+
 <body>
 
     <header>
@@ -81,7 +82,7 @@
                         <input name="EDV" type="text" class="transição" placeholder="EDV:" required="required"
                             minlength="8" maxlength="8">
                         <input name="CPF" type="text" class="transição" id="cpf" onkeypress="mascara()"
-                            placeholder="CPF:" required="required" maxlength="14">
+                            placeholder="CPF:" required="required">
                     </div>
 
                     <div class="line">
@@ -101,8 +102,8 @@
                     Relatórios deste Computador
                 </h4>
 
-                <form action="/relatorio/<%= computador.SpotPosition %>/filter" method="POST">
-                    <select id="retorno_relatorio" required="required" onchange="this.form.submit()">
+                <form action="" method="">
+                    <select id="retorno_relatorio" required="required">
                         <option value="Todos" selected>Todos</option>
                         <option value="Pendentes">Pendentes</option>
                         <option value="Resolvidos">Resolvidos</option>
@@ -117,7 +118,7 @@
                                 <% if (logs[i].Resolved) { %>
                                     <i class="far fa-check-circle"></i>
                                     <% } else { %>
-                                        <p> <i class="far fa-times-circle adm"></i></p>
+                                       <p> <i class="far fa-times-circle adm"></i></p>
                                         <% } %>
                                             <h5 class="nome">
                                                 <%= logs[i].Description %>
@@ -141,7 +142,8 @@
                     </div>
                     <% } %>
 
-                                <!-- <div class="relatorio" id="Médio">
+
+                        <!-- <div class="relatorio" id="Médio">
                             <div class="esquerda_relatorio">
                                  <div class="finalizado">
                                     <i class="far fa-check-circle"></i>
@@ -164,6 +166,8 @@
 
 
             </div>
+
+
         </div>
 
     </main>
