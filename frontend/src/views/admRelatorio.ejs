@@ -5,54 +5,74 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../css/header.css">
-    <link rel="stylesheet" href="../../css/adm_relatoio.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../../css/adm_relatorio.css">
 
-    <link rel="stylesheet" href="../../../css/header.css">
-    <link rel="stylesheet" href="../../../css/adm_relatoio.css">
-
+    
+    <script src="../../js/confirmAction.js"></script>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
         integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-    <title>Relatorios</title>
+    <title>Adicionar Componente</title>
 </head>
 
 <body>
-
     <header>
         <a href="/adm">
             <h1>SD Maintenance Log</h1>
         </a>
-
-        <div class="links">
-            <a href="controle_sala.html">Sala</a>
-        </div>
+        <a href="/" class="button">
+            <i class="fas fa-door-open"></i>
+            <div class="logout">LOGOUT</div>
+        </a>
     </header>
     <div class="Loading">
         <div class="Loading-progress"></div>
     </div>
 
+
+    <!---------------------------------------------------------------------------------------------->
     <main>
         <div class="lista">
             <h3 class="title">
                 COMPONENTES DO DISPOSITIVO <br>
                 <%= computador.Name %>
             </h3>
-            <% for(var i=0; i < computador.devices.length; i++) { %>
-                <div class="item">
-                    <%= computador.devices[i].Name %>
+
+            <% for( let i=0; i < computador.devices.length; i++ ) { %>
+                <form action="/adm/editDevice/<%= computador.SpotPosition %>" onclick="this.submit()" method="POST">
+                    <div class="item">
+                        <input style="display: none;" name="ID" value="<%=computador.devices[i].ID%>">
+                        <input style="display: none;" name="Device" value="<%=computador.devices[i].Name%>">
+                        <input style="display: none;" name="Brand" value="<%=computador.devices[i].Brand%>">
+                        <input style="display: none;" name="Description" value="<%=computador.devices[i].Description%>">
+                        <p>
+                            <%= computador.devices[i].Name %>
+                        </p>
                         <span class="tooltiptext">
-                            <b>Marca: <%= computador.devices[i].Brand %></b>
-                            <br>
-                            <b>Descrição: <%= computador.devices[i].Description%></b>
+                            <b>Marca: </b>
+                            <%= computador.devices[i].Brand %>
+                                <br>
+                                <b>Descrição: </b>
+                                <%= computador.devices[i].Description %>
                         </span>
-                </div>
+                    </div>
+                </form>
                 <% } %>
         </div>
 
+        <!---------------------------------------------------------------------------------------------->
+
         <div class="right">
+            <div class="buttons">
+                <button id="nao_selecionado">Componentes</button>
+
+                <button id="selecionado" style="margin-left: .3em;" type="submit" form="redirect-form">Relatorios</button>
+
+                <form id="redirect-form" class="some" action="/adm/relatorio/<%= computador.SpotPosition %>" method="GET"></form>
+            </div>
+
             <div class="tds_relatorios">
                 <h4 class="title" style="align-items: center;">
                     <i class="fas fa-tty" style="color: black; margin-right: .5em; font-size: 3rem;"></i>
@@ -98,9 +118,8 @@
                         </div>
                     </div>
                     <% } %>
-
-
             </div>
+
         </div>
     </main>
 </body>

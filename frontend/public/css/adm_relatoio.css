@@ -5,6 +5,7 @@
 }
 
 
+
 main {
     display: flex;
     justify-content: space-between;
@@ -14,22 +15,14 @@ main {
     height: 40em;
 }
 
-.title {
-    width: 80%;
-    font-size: 30px;
-    text-align: center;
-    margin: 0 auto;
-}
 
 
-
-
-/* ----------------------------------------------------------------------- */
+/* ---------------------------------------------------------------------------------------------- */
 
 .lista {
     width: 50%;
     margin-left: 1em;
-    margin-top: 5em !important;
+    margin-top: 4em;
     padding: 1em;
     justify-self: left;
     border: solid 1px lightgray;
@@ -38,6 +31,14 @@ main {
     overflow-y: scroll;
     scrollbar-width: auto;
     scrollbar-color: #5C8EF2 #eaebeb;
+}
+
+
+.title {
+    width: 80%;
+    font-size: 35px;
+    text-align: center;
+    margin: 0 auto;
 }
 
 .item {
@@ -63,15 +64,17 @@ main {
     float: right;
     -webkit-transition: 0.2s;
     transition: 0.2s;
-
 }
 
 
 .item:hover .tooltiptext {
     margin-left: 1em;
-    margin-top: -.8em;
+    margin-top: -2.8em;
     visibility: visible;
 }
+
+
+
 
 
 .lista::-webkit-scrollbar {
@@ -84,40 +87,83 @@ main {
 
 .lista::-webkit-scrollbar-thumb {
     border-radius: 12px;
-    background-color: rgb(2, 17, 30);	
-	background-image: -webkit-linear-gradient(45deg,
-	                                          rgba(255, 255, 255, .2) 25%,
-											  transparent 25%,
-											  transparent 50%,
-											  rgba(255, 255, 255, .2) 50%,
-											  rgba(255, 255, 255, .2) 75%,
-											  transparent 75%,
-											  transparent);
+    background-color: rgb(166, 166, 166);
+	background-image: -webkit-linear-gradient(90deg,
+	                                          rgba(0, 0, 0, 1) 0%,
+											  rgba(0, 0, 0, 1) 25%,
+											  transparent 100%,
+											  rgba(0, 0, 0, 1) 75%,
+											  transparent);    
 }
 
 
 
-/* ----------------------------------------------------------------------- */
+
+/* ---------------------------------------------------------------------------------------------- */
+
+
 .right {
-    width: 80%;
-    height: 100%;
-    margin-top: 5em !important;
+    width: 60%;
+    margin-top: 4em;
     margin-left: 5em;
+    height: 100%;
 }
 
+.buttons {
+    width: 60%;
+    display: flex;
+}
 
-/* ----------------------------------------------------------------------- */
+.buttons button {
+    padding: 1em;
+    font-size: 20px;
+    font-weight: 700;
+    border-radius: 10px 10px 0 0;
+    width: 50%;
+}
+
+#selecionado {
+    background-color: black;
+    color: white;
+}
+
+#nao_selecionado {
+    opacity: 0.2;
+    -webkit-transition: 0.5s;
+}
+
+#nao_selecionado:hover {
+    opacity: 1;
+    background-color: white;
+}
+
+/* ---------------------------------------------------------------------------------------------- */
+
 .tds_relatorios {
+    color: black;
+    background-color: white;
     padding: 2em;
-    border: solid 1px lightgray;
-    border-radius: 5px;
+    border: 5px solid black;
+    border-radius: 0 5px 5px 5px;
     width: 100%;
-    height: 100%;
+    height: 90%;
     overflow-y: scroll;
     scrollbar-width: auto;
     scrollbar-color: #5C8EF2 #eaebeb;
 }
 
+#retorno_relatorio {
+    margin-top: .8em;
+    padding: .8em;
+    border: 1px solid lightgray;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline: none;
+    border-radius: 10px;
+    width: auto;
+    font-size: 15px;
+    font-weight: 600;
+}
 
 .tds_relatorios::-webkit-scrollbar {
     width: 16px;
@@ -142,6 +188,10 @@ main {
    
 }
 
+
+
+
+/* ---------------------------------------------------------------------------------------------- */
 .relatorio {
     display: flex;
     border: solid 2px;
@@ -154,16 +204,31 @@ main {
     color: white;
 }
 
+#Grave {
+    border-color: crimson;
+}
 
-.direita_relatorio {
-    display: flex;
-    align-items: center;
-    float: right;
-    justify-content: end;
-    width: 30%;
+#Médio {
+    border-color: #e2c939;
+}
+
+#Simples {
+    border-color: #5fbfff;
 }
 
 
+
+
+
+
+
+/* ------------------------ */
+.esquerda_relatorio {
+    display: flex;
+    align-items: center;
+    float: left;
+    width: 36%;    
+}
 .finalizado
 {
     display: flex;
@@ -180,23 +245,6 @@ main {
 .pendente
 {
     display: flex;
-    align-items: center;
-}
-
-.esquerda_relatorio {
-    display: flex;
-    align-items: center;
-    float: left;
-    width: 36%;    
-}
-
-
-.meio_relatorio
-{
-    font-size: 15px;
-    opacity: .5;
-    width: 30%;
-    text-align: center;
     align-items: center;
 }
 
@@ -272,43 +320,37 @@ main {
 }
 
 
-#retorno_relatorio {
-    margin-top: .8em;
-    padding: .8em;
-    border: 1px solid lightgray;
-    -webkit-transition: 0.5s;
-    transition: 0.5s;
-    outline: none;
-    border-radius: 10px;
-    width: auto;
+
+
+
+
+
+/* ------------------------ */
+
+.meio_relatorio
+{
     font-size: 15px;
-    font-weight: 600;
-}
-
-.relatorios {
-    margin-top: 1em;
-    padding: 1em;
-    border: solid 1px lightgray;
-    border-radius: 5px;
-    width: 100%;
-    box-shadow: rgba(13, 7, 20, 0.2) 0 15px 30px -5px;
+    opacity: .5;
+    width: 30%;
+    text-align: center;
+    align-items: center;
 }
 
 
 
-/* ----------------------------------------------------------------------- */
 
 
-#Grave {
-    border-color: crimson;
-}
 
-#Médio {
-    border-color: #e2c939;
-}
 
-#Simples {
-    border-color: #5fbfff;
+
+/* ------------------------ */
+
+.direita_relatorio {
+    display: flex;
+    align-items: center;
+    float: right;
+    justify-content: end;
+    width: 30%;
 }
 
 #Grave .circle {
@@ -339,57 +381,7 @@ main {
     box-shadow: inset 0 0 0.5em 0 #5fbfff, 0 0 0.5em 0#5fbfff;
 }
 
-@media (max-width: 1400px) {
-
-    .title {
-        font-size: 25px;
-    }
-
-    .right {
-        margin-top: 2em !important;
-        height: 75%;
-        width: 70%;
-    }
 
 
-    .lista {
-        margin-top: 2em !important;
-        height: 80%;
-    }
-
-    .lista .title {
-        font-size: 20px;
-    }
-
-    .item {
-        font-size: 15px;
-    }
 
 
-    .tds_relatorios .title {
-        font-size: 28px;
-    }
-
-    .tds_relatorios i {
-        font-size: 1.5em !important;
-    }
-
-
-    #retorno_relatorio {
-        font-size: 12px !important;
-    }
-
-    .relatorio {
-        font-size: 16px;
-        padding: .5em;
-    }
-
-    .relatorio i {
-        font-size: 1.3em !important;
-    }
-
-    .meio_relatorio
-    {
-        font-size: 12px;
-    }
-}
