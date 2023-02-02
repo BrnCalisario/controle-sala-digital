@@ -15,6 +15,7 @@
 </head>
 
 <body>
+  
     <header>
         <a href="/">
             <h1>SD Maintenance Log</h1>
@@ -33,13 +34,18 @@
             <h3 class="title">ACESSO ADMINISTRATIVO</h3>
             <form action="/login" method="POST">
                 <input type="text" placeholder="Login" name="Login">
-                <input type="password" placeholder="Senha" name="Password">
+                <div class="senha">
+                     <input type="password" placeholder="Senha" name="Password" class="password">
+                     <i class="far fa-eye" id="eye"></i>
+                </div>
+               
 
                 <button type="submit" value="Entrar">Login<i style="margin-left: .5em;" class="fas fa-sign-in-alt"></i></input>
             </form>
         </div>
 
     </div>
+    <script src="js/eye_password.js"></script>
 </body>
 
 </html>

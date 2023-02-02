@@ -79,12 +79,23 @@
     font-size: 18px;
     -webkit-transition: 0.5s;
     transition: 0.5s;
+    /* width: 80%; */
+}
+
+.right form
+{
+    justify-content: center;
 }
 
 
 .right input:focus {
     border: 4px solid #6495ED;
     background-color: #F8F8F8
+}
+
+
+input::-ms-reveal {
+    display: none;
 }
 
 
@@ -110,6 +121,27 @@
 }
 
 
+
+.senha
+{
+    margin: 0 auto;
+    width: 106%;
+    display: flex;
+   
+}
+
+.senha input
+{
+    width: 100%;
+}
+
+#eye {
+    position: relative;
+    top: 1.3em;
+    right: 40px;
+    cursor: pointer;
+    color: rgba(0, 0, 0, 0.349);
+}
 
 
 
