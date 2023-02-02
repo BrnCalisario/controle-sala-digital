@@ -16,6 +16,10 @@ class logController {
         if (!userQuery)
             return res.sendStatus(400)
 
+        if(!userQuery.Active) {
+            return res.sendStatus(410)
+        }
+
         const deviceQuery = await device.findOne(
             { where: { ID: req.body.Device } }
         ).catch(error => { return res.sendStatus(400) })

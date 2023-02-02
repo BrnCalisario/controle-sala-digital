@@ -28,6 +28,8 @@ router.get('/adm', adminController.getHome)
 router.get('/adm/usuarios', adminController.getUserCreate)
 router.post('/adm/usuarios', adminController.insertUser)
 router.post('/adm/editUsuario', adminController.getUserEditor)
+router.post('/adm/editUsuario/edit', adminController.updateUser)
+
 
 // CADASTRO DE COMPUTADORES
 router.get('/adm/computador/cadastrar/:pos', computerController.getComputerCreate)

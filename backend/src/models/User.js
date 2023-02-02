@@ -22,6 +22,11 @@ const user = database.define("User", {
         type: Sequelize.STRING(11),
         allowNull: false,
         unique: true
+    },
+    Active: { 
+        type: Sequelize.BOOLEAN,
+        allowNull: false,
+        defaultValue: true,
     }
 })
 

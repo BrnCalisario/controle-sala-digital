@@ -2,7 +2,7 @@ import user from '../models/User.js';
 
 class UserController {
     async getAll(req, res) {
-        const users = await user.findAll()
+        const users = await user.findAll({where: {Active: true}})
         res.json(users)
     }
 
@@ -23,16 +23,17 @@ class UserController {
     }
 
     async update(req, res) {
-        await user.update(req.body)
+        await user.update(req.body, { where: { EDV: req.body.EDV } })
             .then(response => {
                 return res.sendStatus(200)
             })
             .catch(error => {
+                console.log(error)
                 return res.sendStatus(400)
             })
     }
 
-    
+
 }
 
 export default new UserController()

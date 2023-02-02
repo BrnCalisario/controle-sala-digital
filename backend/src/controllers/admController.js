@@ -13,7 +13,7 @@ class adminController {
         const account = await admin.findOne({ where: {  Login: data.Login } })
         
         if (account == null || account.Password != data.Password)
-            return res.sendStatus(400)
+            return res.sendStatus(401)
 
         return res.sendStatus(200)
     }

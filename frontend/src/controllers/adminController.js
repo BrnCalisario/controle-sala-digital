@@ -37,7 +37,7 @@ class adminController {
                 return res.render('../views/admUsuarios', {
                     usuarios: response.data,
                     edit: false,
-                    values: { Shift: ''}
+                    values: { Shift: '' }
                 })
             })
             .catch(error => {
@@ -96,7 +96,33 @@ class adminController {
     }
 
     async updateUser(req, res) {
-        await axios.put('/user')
+        const data = req.body
+
+        const aluno = {
+            EDV: data.EDV,
+            Full_Name: data.Name + " " + data.Name2,
+            Role: data.Role,
+            Shift: data.Shift,
+            CPF: data.CPF.replaceAll('.', '').replace('-', ''),
+        }
+
+        await axios.put('/user/', aluno)
+            .then(response => {
+                return res.redirect('/adm/usuarios')
+            })
+            .catch(error => {
+                res.redirect('/erro')
+            })
+    }
+
+    async deleteUser(req, res) {
+        await axios.delete('/user/' + req.params)
+            .then(response => {
+                return res.redirect('/adm/usuarios')
+            })
+            .catch(error => {
+                res.redirect('/erro')
+            })
     }
 }
 
