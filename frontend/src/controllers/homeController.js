@@ -134,6 +134,17 @@ class HomeController {
                 res.redirect('/erro')
             })
     }
+
+    async resolveLog(req, res) {
+        await axios.post('/log/' + req.body.id)
+            .then(response => {
+                res.redirect('/adm/relatorio/' + req.params.pos)
+            })
+            .catch(error => {
+                console.log(error)
+                res.redirect('/erro')
+            })
+    }
 }
 
 export default new HomeController()

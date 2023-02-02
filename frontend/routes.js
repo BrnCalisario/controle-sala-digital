@@ -52,7 +52,7 @@ router.post('/adm/removeDevice/:pos/', deviceController.deleteDevice)
 
 router.get('/adm/relatorio/:pos', homeController.getADMLog)
 router.post('/adm/relatorio/:pos/filter', homeController.filterADMLog)
-
+router.post('/adm/relatorio/resolver/:pos', homeController.resolveLog)
 
 router.get('/*', (req, res) => {
     res.render('notFound')

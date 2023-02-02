@@ -5,7 +5,7 @@ const router = new Router()
 
 router.get('/', logController.getAll)
 router.post('/', logController.create)
-
+router.post('/:id', logController.resolveLog)
 
 export default router
 

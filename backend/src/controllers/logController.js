@@ -16,7 +16,7 @@ class logController {
         if (!userQuery)
             return res.sendStatus(400)
 
-        if(!userQuery.Active) {
+        if (!userQuery.Active) {
             return res.sendStatus(410)
         }
 
@@ -38,6 +38,18 @@ class logController {
         })
 
         return res.sendStatus(200)
+    }
+
+    async resolveLog(req, res) {
+        await log.update(
+            { Resolved: true },
+            { where: { ID: req.params.id } })
+            .then(response => {
+                return res.sendStatus(200)
+            })
+            .catch(error => {
+                return res.sendStatus(400)
+            })
     }
 }
 
