@@ -289,9 +289,8 @@ textarea:focus {
 .adm{
     margin-right: .3em;
     padding: .3em;
-    color: rgb(197, 38, 38);
+    color:white;
     font-size: 30px;
-
 }
 
 
@@ -380,12 +379,23 @@ textarea:focus {
         font-size: 25px;
     }
 
+    .item .tooltiptext
+    {
+        font-size: 10px;
+    }
+
     .right {
         margin-top: 2em !important;
     }
 
     .add_relatorio {
-        height: 45%;
+        height: 42%;
+        padding: 1.5em !important;
+    }
+
+    .add_relatorio select
+    {
+        width: 37% !important;
     }
 
     .transição {
@@ -395,6 +405,8 @@ textarea:focus {
 
     textarea {
         font-size: 10px;
+        height: 60px;
+        width: 75%;
     }
 
 
@@ -405,7 +417,7 @@ textarea:focus {
 
     .lista {
         margin-top: 2em !important;
-        height: 96%;
+        height: 89%;
     }
 
     .lista .title {
@@ -413,7 +425,12 @@ textarea:focus {
     }
 
     .item {
-        font-size: 15px;
+        font-size: 18px;
+    }
+
+    .tds_relatorios
+    {
+        padding: 1.5em;
     }
 
     .tds_relatorios .title {
