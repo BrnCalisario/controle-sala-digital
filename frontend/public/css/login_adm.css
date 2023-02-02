@@ -13,6 +13,8 @@
     width: 70%;
     margin-top: 8em;
     display: flex;
+    background-color: black;
+    border-radius: 100px;
 }
 
 
@@ -41,7 +43,7 @@
     background-color: black;
     width: 50%;
     border-radius: 0 15px 100px 0;
-    padding: 2em;
+    /* padding: 2em; */
     justify-content: center;
     align-items: center;
     text-align: center;
@@ -50,9 +52,10 @@
 
 .right .title
 {
-    font-size: 30px;
+    font-size: 38px;
     font-weight: 700;
     margin: 2em;
+    margin-bottom: 1.5em;
     color: white;
 }
 
@@ -122,11 +125,16 @@
 
     .right .title
     {
-        font-size: 20px;
+        font-size: 26px;
     }
 
     .left .fas
     {
         font-size: 25rem !important;
+    }
+
+    .right button[type="submit"]
+    {
+        margin-top: 1em;
     }
 }
