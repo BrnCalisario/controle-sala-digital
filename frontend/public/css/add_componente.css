@@ -237,7 +237,7 @@ main {
 
     .add_componente .title {
         margin-top: 0.2em !important;
-        font-size: 28px !important;
+        font-size: 27px !important;
 
     }
 
@@ -271,7 +271,6 @@ main {
     {
         height: 110%;
     }
-
 
     .buttons button{
        font-size: 15px;
