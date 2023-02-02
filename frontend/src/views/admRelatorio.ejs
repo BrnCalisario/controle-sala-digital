@@ -7,9 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../css/header.css">
     <link rel="stylesheet" href="../../css/adm_relatoio.css">
+    <script src="../../js/confirmAction.js"></script>
+
 
     <link rel="stylesheet" href="../../../css/header.css">
     <link rel="stylesheet" href="../../../css/adm_relatoio.css">
+    <script src="../../../js/confirmAction.js"></script>
+
 
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
@@ -25,10 +29,10 @@
         <a href="/adm">
             <h1>SD Maintenance Log</h1>
         </a>
-
-        <div class="links">
-            <a href="controle_sala.html">Sala</a>
-        </div>
+        <a href="/" class="button">
+            <i class="fas fa-door-open"></i>
+            <div class="logout">LOGOUT</div>
+        </a>
     </header>
     <div class="Loading">
         <div class="Loading-progress"></div>
@@ -69,13 +73,19 @@
 
 
                 <% for( let i=0; i < logs.length; i++ ) { %>
+                    
+    
                     <div class="relatorio" id="<%=logs[i].Type%>">
+                        <form action="/adm/relatorio/resolver/<%= computador.SpotPosition%>" method="POST" class="some" id="form-<%= i %>">
+                            <input name="id" type="text" class="some" value="<%= logs[i].ID %>">
+                        </form>
+
                         <div class="esquerda_relatorio">
                             <div class=<%=logs[i].Resolved ? "finalizado" : "pendente" %> >
                                 <% if (logs[i].Resolved) { %>
                                     <i class="far fa-check-circle"></i>
                                     <% } else { %>
-                                        <p data-tooltip="Finalizar"> <i class="far fa-times-circle adm"></i></p>
+                                        <p onclick="resolveLog(event, <%= i %>)" data-tooltip="Finalizar"> <i class="far fa-times-circle adm"></i></p>
                                         <% } %>
                                             <h5 class="nome">
                                                 <%= logs[i].Description %>
