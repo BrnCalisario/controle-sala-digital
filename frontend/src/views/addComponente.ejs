@@ -19,7 +19,7 @@
 
 <body>
     <header>
-        <a href="/">
+        <a href="/adm">
             <h1>SD Maintenance Log</h1>
         </a>
         <div class="links">
@@ -73,7 +73,7 @@
             <div class=<%=edit ? "some" : "add_componente" %> >
                 <div class="title" style="margin-top: 1em;">
                     <h3 class="title">
-                        <i class="fas" style="color: white; font-size: 2em; margin-right: .3em;"></i>
+                        <i class="fas fa-keyboard" style="color: white; font-size: 2em; margin-right: .3em;"></i>
                         Cadastrar Componente
                     </h3>
                 </div>
@@ -89,8 +89,8 @@
                             minlength="2">
                     </div>
                     <div class="line">
-                        <input name="Description" type="text" class="transição" placeholder="Modelo :"
-                            required="required" minlength="2">
+                        <textarea name="Description" class="transição" placeholder="Descrição :"
+                        required="required" minlength="2" style="resize: none;"></textarea>
                     </div>
 
                     <input name="Computer" type="text" style="display: none;" value="<%=computador.Name%>">
@@ -107,7 +107,8 @@
             <div class=<%=edit ? "add_componente" : "some" %>>
                 <div class="title" style="margin-top: 1em;">
                     <h3 class="title">
-                        <i class="fas"></i>
+                        <i class="fas fa-keyboard"></i>
+                        <!-- <i class="fas"></i> -->
                         Editar Componente
                     </h3>
                 </div>
@@ -125,8 +126,9 @@
                             minlength="2" value="<%= edit ? values.Brand : ""%>">
                     </div>
                     <div class="line">
-                        <input name="Description" type="text" class="transição" placeholder="Modelo :"
-                            required="required" minlength="2" value="<%=edit ? values.Description : "" %>">
+                        <textarea name="Description" class="transição" placeholder="Modelo :"
+                        required="required" minlength="2" style="resize: none;"> <%=edit ? values.Description : "" %></textarea>
+
                     </div>
 
 
