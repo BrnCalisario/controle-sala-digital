@@ -40,9 +40,17 @@ main {
 }
 
 .lista::-webkit-scrollbar-thumb {
-    background-color: #111B35;
     border-radius: 12px;
-    border: 2px outset #111B35;
+    background-color: rgb(2, 17, 30);	
+	background-image: -webkit-linear-gradient(45deg,
+	                                          rgba(255, 255, 255, .2) 25%,
+											  transparent 25%,
+											  transparent 50%,
+											  rgba(255, 255, 255, .2) 50%,
+											  rgba(255, 255, 255, .2) 75%,
+											  transparent 75%,
+											  transparent);
+    
 }
 
 
@@ -97,14 +105,14 @@ main {
 
 .cadastrar .transition {
     letter-spacing: .2rem;
-    margin-left: 2em;
+    margin-left: 1em;
     padding: 1.2em;
     border: 2px solid black;
     -webkit-transition: 0.5s;
     transition: 0.5s;
     outline: none;
     border-radius: 10px;
-    width: 35%;
+    width: 34%;
     font-weight: 600;
     font-size: 18px;
     color: #555;

@@ -59,9 +59,14 @@ main {
 }
 
 .lista::-webkit-scrollbar-thumb {
-    background-color: #111B35;
     border-radius: 12px;
-    border: 2px outset #111B35;
+    background-color: rgb(166, 166, 166);
+	background-image: -webkit-linear-gradient(90deg,
+	                                          rgba(0, 0, 0, 1) 0%,
+											  rgba(0, 0, 0, 1) 25%,
+											  transparent 100%,
+											  rgba(0, 0, 0, 1) 75%,
+											  transparent);    
 }
 
 /* ---------------------------------------------------------------------------------------------- */
@@ -203,16 +208,16 @@ main {
     padding: 5px 0;
     border-radius: 6px;
     font-size: 12px;
+    align-items: center;
+    float: right;
     -webkit-transition: 0.2s;
     transition: 0.2s;
-    float: right;
-
 }
 
 
 .item:hover .tooltiptext {
     margin-left: 1em;
-    margin-top: -.8em;
+    margin-top: -2.8em;
     visibility: visible;
 }
 
@@ -232,12 +237,12 @@ main {
 
     .add_componente .title {
         margin-top: 0.2em !important;
-        font-size: 30px;
+        font-size: 28px !important;
 
     }
 
     .fas {
-        font-size: 1em;
+        font-size: 1em !important;
     }
 
 
