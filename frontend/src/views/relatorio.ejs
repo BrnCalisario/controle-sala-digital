@@ -8,12 +8,14 @@
     <link rel="stylesheet" href="../../css/relatorio.css">
     <link rel="stylesheet" href="../../css/header.css">
     <script src="../js/CPF_mask.js"></script>
+    <script src="../../js/CPF_mask.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
         integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <title>Relatorio</title>
 </head>
+
 <body>
 
     <header>
@@ -102,10 +104,10 @@
                 </h4>
 
                 <form action="/relatorio/<%= computador.SpotPosition %>/filter" method="POST">
-                    <select id="retorno_relatorio" required="required" onchange="this.form.submit()">
-                        <option value="Todos" selected>Todos</option>
-                        <option value="Pendentes">Pendentes</option>
-                        <option value="Resolvidos">Resolvidos</option>
+                    <select name="filter" id="retorno_relatorio" required="required" onchange="this.form.submit()">
+                        <option <%=filter==="Todos" ? 'selected' : '' %> value="Todos" selected>Todos</option>
+                        <option <%=filter==="Pendentes" ? 'selected' : '' %> value="Pendentes">Pendentes</option>
+                        <option <%=filter==="Resolvidos" ? 'selected' : '' %> value="Resolvidos">Resolvidos</option>
                     </select>
                 </form>
 
@@ -141,7 +143,7 @@
                     </div>
                     <% } %>
 
-                                <!-- <div class="relatorio" id="Médio">
+                        <!-- <div class="relatorio" id="Médio">
                             <div class="esquerda_relatorio">
                                  <div class="finalizado">
                                     <i class="far fa-check-circle"></i>

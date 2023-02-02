@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/header.css">
+    <link rel="stylesheet" href="../../css/adm_relatoio.css">
+
+    <link rel="stylesheet" href="../../../css/header.css">
+    <link rel="stylesheet" href="../../../css/adm_relatoio.css">
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+        integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <title>Relatorios</title>
+</head>
+
+<body>
+
+    <header>
+        <a href="/adm">
+            <h1>SD Maintenance Log</h1>
+        </a>
+
+        <div class="links">
+            <a href="controle_sala.html">Sala</a>
+        </div>
+    </header>
+    <div class="Loading">
+        <div class="Loading-progress"></div>
+    </div>
+
+    <main>
+        <div class="lista">
+            <h3 class="title">
+                COMPONENTES DO DISPOSITIVO <br>
+                <%= computador.Name %>
+            </h3>
+            <% for(var i=0; i < computador.devices.length; i++) { %>
+                <div class="item">
+                    <%= computador.devices[i].Name %>
+                        <span class="tooltiptext">
+                            <b>Marca: <%= computador.devices[i].Brand %></b>
+                            <br>
+                            <b>Descrição: <%= computador.devices[i].Description%></b>
+                        </span>
+                </div>
+                <% } %>
+        </div>
+
+        <div class="right">
+            <div class="tds_relatorios">
+                <h4 class="title" style="align-items: center;">
+                    <i class="fas fa-tty" style="color: black; margin-right: .5em; font-size: 3rem;"></i>
+                    Relatórios deste Computador
+                </h4>
+
+                <form action="/adm/relatorio/<%= computador.SpotPosition %>/filter" method="POST">
+                    <select name="filter" id="retorno_relatorio" required="required" onchange="this.form.submit()">
+                        <option <%=filter==="Todos" ? 'selected' : '' %> value="Todos" selected>Todos</option>
+                        <option <%=filter==="Pendentes" ? 'selected' : '' %> value="Pendentes">Pendentes</option>
+                        <option <%=filter==="Resolvidos" ? 'selected' : '' %> value="Resolvidos">Resolvidos</option>
+                    </select>
+                </form>
+
+
+                <% for( let i=0; i < logs.length; i++ ) { %>
+                    <div class="relatorio" id="<%=logs[i].Type%>">
+                        <div class="esquerda_relatorio">
+                            <div class=<%=logs[i].Resolved ? "finalizado" : "pendente" %> >
+                                <% if (logs[i].Resolved) { %>
+                                    <i class="far fa-check-circle"></i>
+                                    <% } else { %>
+                                        <p data-tooltip="Finalizar"> <i class="far fa-times-circle adm"></i></p>
+                                        <% } %>
+                                            <h5 class="nome">
+                                                <%= logs[i].Description %>
+                                            </h5>
+                            </div>
+                        </div>
+
+                        <div class="meio_relatorio">
+                            <p>
+                                <%= logs[i].createdAt %> <br> Usuário: <%= logs[i].User %>
+                            </p>
+                        </div>
+
+                        <div class="direita_relatorio">
+                            <span style="font-size: 15px;">
+                                <%= logs[i].Device %>
+                            </span>
+                            <div class="circle"></div>
+
+                        </div>
+                    </div>
+                    <% } %>
+
+
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

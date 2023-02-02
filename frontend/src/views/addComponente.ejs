@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../css/header.css">
     <link rel="stylesheet" href="../../css/add_componente.css">
-    
+
     <script src="../../js/confirmAction.js"></script>
 
 
@@ -67,7 +67,10 @@
         <div class="right">
             <div class="buttons">
                 <button id="selecionado">Componentes</button>
-                <button id="nao_selecionado" style="margin-left: .3em;">Relatorios</button>
+
+                <button id="nao_selecionado" style="margin-left: .3em;" type="submit" form="redirect-form">Relatorios</button>
+
+                <form id="redirect-form" class="some" action="/adm/relatorio/<%= computador.SpotPosition %>" method="GET"></form>
             </div>
 
             <!-- CADASTRAR COMPONENTE -->
@@ -90,8 +93,8 @@
                             minlength="2">
                     </div>
                     <div class="line">
-                        <textarea name="Description" class="transição" placeholder="Descrição :"
-                        required="required" minlength="2" style="resize: none;"></textarea>
+                        <textarea name="Description" class="transição" placeholder="Descrição :" required="required"
+                            minlength="2" style="resize: none;"></textarea>
                     </div>
 
                     <input name="Computer" type="text" style="display: none;" value="<%=computador.Name%>">
@@ -127,8 +130,8 @@
                             minlength="2" value="<%= edit ? values.Brand : ""%>">
                     </div>
                     <div class="line">
-                        <textarea name="Description" class="transição" placeholder="Modelo :"
-                        required="required" minlength="2" style="resize: none;"> <%=edit ? values.Description : "" %></textarea>
+                        <textarea name="Description" class="transição" placeholder="Modelo :" required="required"
+                            minlength="2" style="resize: none;"> <%=edit ? values.Description : "" %></textarea>
 
                     </div>
 
@@ -136,17 +139,20 @@
                     <div class="line" style="margin-top: .5em; margin-bottom: 1em;">
                         <button type="submit" value="Cadastrar" id="enviar">Editar</button>
                         <% if (edit) { %>
-                            <button class=<%= values.Device === "Este Computador" ? 'some' : '' %> onclick="deleteFunction(event)" value="Cadastrar" id="excluir">Excluir</button>
-                        <% } %>
+                            <button class=<%=values.Device==="Este Computador" ? 'some' : '' %>
+                                onclick="deleteFunction(event)" value="Cadastrar" id="excluir">Excluir</button>
+                            <% } %>
                     </div>
                 </form>
 
-                <form id="deleteForm" name="delete" action="/adm/removeComputer/<%=computador.SpotPosition%>" method="POST">
-                    <input name="ID" class="some" value=<%= edit ? values.ID : '' %>>
+                <form id="deleteForm" name="delete" action="/adm/removeComputer/<%=computador.SpotPosition%>"
+                    method="POST">
+                    <input name="ID" class="some" value=<%=edit ? values.ID : '' %>>
                 </form>
             </div>
 
         </div>
     </main>
 </body>
+
 </html>

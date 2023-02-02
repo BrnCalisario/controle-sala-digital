@@ -14,6 +14,7 @@ router.get('/', homeController.getHome)
 
 // TELA DE RELATÓRIO
 router.get('/relatorio/:pos', homeController.getLog)
+router.post('/relatorio/:pos/filter', homeController.filterLog)
 router.post('/relatorio/:pos', homeController.insertLog)
 
 // TELE DE LOGIN
@@ -48,6 +49,9 @@ router.post('/adm/computador/:pos', deviceController.createDevice)
 router.post('/adm/editDevice/:pos/', deviceController.getDeviceEditor)
 router.post('/adm/editDevice/:pos/edit', deviceController.updateDevice)
 router.post('/adm/removeDevice/:pos/', deviceController.deleteDevice)
+
+router.get('/adm/relatorio/:pos', homeController.getADMLog)
+router.post('/adm/relatorio/:pos/filter', homeController.filterADMLog)
 
 
 router.get('/*', (req, res) => {
