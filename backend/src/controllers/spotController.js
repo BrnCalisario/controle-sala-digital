@@ -7,7 +7,7 @@ class SpotController {
     }
 
     async initializeRoom(req, res) {
-        for(var i = 1; i < 21; i++)  {
+        for(var i = 1; i <= 21; i++)  {
             spot.create({
                 Position: i,
                 Reserved: false                

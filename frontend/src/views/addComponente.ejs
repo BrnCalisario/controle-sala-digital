@@ -47,6 +47,7 @@
                         <input style="display: none;" name="Device" value="<%=computador.devices[i].Name%>">
                         <input style="display: none;" name="Brand" value="<%=computador.devices[i].Brand%>">
                         <input style="display: none;" name="Description" value="<%=computador.devices[i].Description%>">
+                        <input style="display: none;" name="IsMainDevice" value="<%=computador.devices[i].isMainDevice%>">
                         <p>
                             <%= computador.devices[i].Name %>
                         </p>
@@ -138,8 +139,8 @@
 
                     <div class="line" style="margin-top: .5em; margin-bottom: 1em;">
                         <button type="submit" value="Cadastrar" id="enviar">Editar</button>
-                        <% if (edit) { %>
-                            <button class=<%=values.Device==="Este Computador" ? 'some' : '' %>
+                        <% if (edit && values.IsMainDevice) { %>
+                            <button class= <%= values.IsMainDevice == 'true' ? 'some' : '' %>
                                 onclick="deleteFunction(event)" value="Cadastrar" id="excluir">Excluir</button>
                             <% } %>
                     </div>
