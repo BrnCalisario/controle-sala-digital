@@ -43,14 +43,20 @@
                 <%= computador.Name %>
             </h3>
             <% for(var i=0; i < computador.devices.length; i++) { %>
-                <div class="item">
-                    <%= computador.devices[i].Name %>
+                <form action="/relatorio/<%= computador.SpotPosition %>" onclick="this.submit()" method="POST">
+                    <div class="item <%= device === computador.devices[i].Name ? "selected" : '' %>">
+                        <input style="display: none;" name="ID" value="<%=computador.devices[i].ID%>">
+                        <input style="display: none;" name="Device" value="<%=computador.devices[i].Name%>">
+                        <p>
+                            <%= computador.devices[i].Name %>
+                        </p>
                         <span class="tooltiptext">
                             <b>Marca: <%= computador.devices[i].Brand %></b>
                             <br>
                             <b>Descrição: <%= computador.devices[i].Description%></b>
                         </span>
-                </div>
+                    </div>
+                </form>
                 <% } %>
         </div>
 
@@ -65,7 +71,7 @@
                     <br>
                 </h4>
 
-                <form action="/relatorio/<%= computador.SpotPosition %>" method="POST">
+                <form action="/relatorio/insert/<%= computador.SpotPosition %>" method="POST">
                     <div class="line">
                         <select name="Type" class="transição" style="width: 38%; margin-left: 2.8em;">
                             <option value="" selected disabled required="required"> Tipo relatorio</option>

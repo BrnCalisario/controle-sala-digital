@@ -104,6 +104,7 @@ class computerController {
     }
 
     async updateComputer(req, res) {
+        console.log(req.body)
         await axios.put('/computer', req.body)
             .then(response => {
                 res.redirect('/adm/computador/' + req.params.pos)

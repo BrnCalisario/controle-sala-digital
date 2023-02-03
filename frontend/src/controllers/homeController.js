@@ -17,27 +17,6 @@ class HomeController {
 
 
     async getLog(req, res) {
-        await axios.get('/computer/fullStats/' + req.params.pos)
-            .then(response => {
-
-                var myLogs = response.data.allLogs
-                myLogs = myLogs.map((l) => {
-                    var date = new Date(l.createdAt).toJSON().slice(0, 10).split('-')
-                    l.createdAt = date[2] + "/" + date[1] + "/" + date[0]
-                    return l
-                })
-
-                var aux = myLogs.filter(l => !l.Resolved)
-                aux.push.apply(aux, myLogs.filter(l => l.Resolved))
-
-                return res.render('../views/relatorio', { computador: response.data.pc, logs: aux, filter: 'Todos' })
-            })
-            .catch(error => {
-                res.render('../views/notFound')
-            })
-    }
-
-    async getADMLog(req, res) {
         console.log(req.body)
         await axios.get('/computer/fullStats/' + req.params.pos)
             .then(response => {
@@ -52,13 +31,45 @@ class HomeController {
                 var aux = myLogs.filter(l => !l.Resolved)
                 aux.push.apply(aux, myLogs.filter(l => l.Resolved))
 
+                var selectedDevice = null
                 if(req.body.ID && req.body.Device) {
                     aux = aux.filter(l => l.Device === req.body.Device)
+                    selectedDevice = req.body.Device
                 }
 
-                return res.render('../views/admRelatorio', { computador: response.data.pc, logs: aux, filter: 'Todos' })
+                return res.render('../views/relatorio', { computador: response.data.pc, logs: aux, filter: 'Todos', device: selectedDevice })
             })
             .catch(error => {
+                res.render('../views/notFound')
+            })
+    }
+
+    async getADMLog(req, res) {
+        await axios.get('/computer/fullStats/' + req.params.pos)
+            .then(response => {
+
+                var myLogs = response.data.allLogs
+                myLogs = myLogs.map((l) => {
+                    var date = new Date(l.createdAt).toJSON().slice(0, 10).split('-')
+                    l.createdAt = date[2] + "/" + date[1] + "/" + date[0]
+                    return l
+                })
+
+                var aux = myLogs.filter(l => !l.Resolved)
+                aux.push.apply(aux, myLogs.filter(l => l.Resolved))
+
+
+                var selectedDevice = null
+                if(req.body.ID && req.body.Device) {
+                    aux = aux.filter(l => l.Device === req.body.Device)
+                    selectedDevice = req.body.Device
+                }
+                
+
+                return res.render('../views/admRelatorio', { computador: response.data.pc, logs: aux, filter: 'Todos', device: selectedDevice })
+            })
+            .catch(error => {
+                console.log(error)
                 res.render('../views/notFound')
             })
     }
@@ -90,7 +101,7 @@ class HomeController {
                 aux.push.apply(aux, myLogs.filter(l => l.Resolved))
 
                 console.log(req.body.filter)
-                return res.render('../views/admRelatorio', { computador: response.data.pc, logs: aux, filter: selectedFilter })
+                return res.render('../views/admRelatorio', { computador: response.data.pc, logs: aux, filter: selectedFilter, device: null })
             })
             .catch(error => {
                 console.log(error)
@@ -126,7 +137,7 @@ class HomeController {
                 aux.push.apply(aux, myLogs.filter(l => l.Resolved))
 
                 console.log(req.body.filter)
-                return res.render('../views/relatorio', { computador: response.data.pc, logs: aux, filter: selectedFilter })
+                return res.render('../views/relatorio', { computador: response.data.pc, logs: aux, filter: selectedFilter, device: null })
             })
             .catch(error => {
                 console.log(error)

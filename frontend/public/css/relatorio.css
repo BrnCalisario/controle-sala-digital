@@ -48,6 +48,9 @@ main {
     font-size: 20px;
 }
 
+.selected {
+    border: solid 2px lightblue;
+}
 
 
 .item .tooltiptext {
