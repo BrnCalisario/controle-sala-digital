@@ -13,6 +13,7 @@ class deviceController {
     }
     
     async getDeviceEditor(req, res) {
+        console.log(req.body)
         await axios.get('/computer/fullStats/' + req.params.pos)
             .then(response => {
                 res.render('../views/addComponente', { computador: response.data.pc, edit: true, values: req.body })
