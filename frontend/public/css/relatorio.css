@@ -445,17 +445,27 @@ textarea:focus {
     }
 
     .relatorio {
-        font-size: 15px;
+        font-size: 17px;
         padding: .5em;
     }
 
     .relatorio i {
-        font-size: 1em !important;
+        font-size: 1.2em !important;
     }
 
 
     .meio_relatorio
     {
-        font-size: 10px;
+        font-size: 11px;
+    }
+
+    .direita_relatorio 
+    {
+        font-size: 15px;
+    }
+
+    .direita_relatorio span
+    {
+        font-size: 12px !important;
     }
 }

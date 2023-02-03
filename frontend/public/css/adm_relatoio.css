@@ -382,5 +382,74 @@ main {
 
 
 
+@media (max-width: 1400px) {
+
+    main {
+        height: 25em;
+    }
+
+    .title {
+        width: 80%;
+        font-size: 25px;
+    }
+
+    .fas {
+        font-size: 1em !important;
+    }
 
 
+    
+
+    .lista
+    {
+        height: 110%;
+    }
+
+    .item {
+        font-size: 15px;
+    }
+    .item .tooltiptext
+    {
+        font-size: 10px;
+    }
+
+    .buttons button{
+       font-size: 15px;
+    }
+
+
+
+    #retorno_relatorio {
+        font-size: 12px !important;
+    }
+
+    .tds_relatorios
+    {
+        height: 87%;
+    }
+
+    .relatorio {
+        font-size: 17px;
+        padding: .5em;
+    }
+
+    .relatorio i {
+        font-size: 1.2em !important;
+    }
+
+
+    .meio_relatorio
+    {
+        font-size: 11px;
+    }
+
+    .direita_relatorio 
+    {
+        font-size: 15px;
+    }
+
+    .direita_relatorio span
+    {
+        font-size: 12px !important;
+    }
+}
