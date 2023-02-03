@@ -3,12 +3,10 @@ import routes from "./routes.js"
 
 import favicon from 'serve-favicon'
 
-
 const app = express()
 
 app.use(express.urlencoded({ extended: true }))
 app.use(express.static("public"))
-
 
 app.use(favicon(process.cwd() + '/public/img/favicon.png'))
 

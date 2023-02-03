@@ -60,13 +60,15 @@ main {
 
 .lista::-webkit-scrollbar-thumb {
     border-radius: 12px;
-    background-color: rgb(166, 166, 166);
-	background-image: -webkit-linear-gradient(90deg,
-	                                          rgba(0, 0, 0, 1) 0%,
-											  rgba(0, 0, 0, 1) 25%,
-											  transparent 100%,
-											  rgba(0, 0, 0, 1) 75%,
-											  transparent);    
+    background-color: rgb(2, 17, 30);	
+	background-image: -webkit-linear-gradient(45deg,
+	                                          rgba(255, 255, 255, .2) 25%,
+											  transparent 25%,
+											  transparent 50%,
+											  rgba(255, 255, 255, .2) 50%,
+											  rgba(255, 255, 255, .2) 75%,
+											  transparent 75%,
+											  transparent);
 }
 
 /* ---------------------------------------------------------------------------------------------- */
@@ -109,7 +111,7 @@ main {
 
 .add_componente {
     padding: 2em;
-    border-radius: 0 5px 5px 5px;
+    /* border-radius: 0 5px 5px 5px; */
     width: 100%;
     background-color: black;
     color: white;
