@@ -16,7 +16,7 @@ class adminController {
                 res.redirect('/adm')
             })
             .catch(error => {
-                res.render('../views/notFound')
+                res.render('../views/invalidUser')
             })
     }
 

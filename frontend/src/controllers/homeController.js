@@ -155,9 +155,10 @@ class HomeController {
 
         await axios.post('/log', data)
             .then(response => {
-                res.redirect(req.originalUrl)
+                res.redirect('/relatorio/' + req.params.pos)
             })
             .catch(error => {
+                console.log(error)
                 res.redirect('/erro')
             })
     }
