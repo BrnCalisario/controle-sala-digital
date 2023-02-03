@@ -19,9 +19,13 @@
 
 <body>
     <header>
-        <a href="/adm">
-            <h1>SD Maintenance Log</h1>
-        </a>
+        <div class="dir">
+            <img src="../../img/big_icon.png">
+            <a href="/adm">
+                <h1>SD Maintenance Log</h1>
+            </a>
+        </div>
+
         <a href="/" class="button">
             <i class="fas fa-door-open"></i>
             <div class="logout">LOGOUT</div>
@@ -47,7 +51,8 @@
                         <input style="display: none;" name="Device" value="<%=computador.devices[i].Name%>">
                         <input style="display: none;" name="Brand" value="<%=computador.devices[i].Brand%>">
                         <input style="display: none;" name="Description" value="<%=computador.devices[i].Description%>">
-                        <input style="display: none;" name="IsMainDevice" value="<%=computador.devices[i].isMainDevice%>">
+                        <input style="display: none;" name="IsMainDevice"
+                            value="<%=computador.devices[i].isMainDevice%>">
                         <p>
                             <%= computador.devices[i].Name %>
                         </p>
@@ -69,9 +74,11 @@
             <div class="buttons">
                 <button id="selecionado">Componentes</button>
 
-                <button id="nao_selecionado" style="margin-left: .3em;" type="submit" form="redirect-form">Relatorios</button>
+                <button id="nao_selecionado" style="margin-left: .3em;" type="submit"
+                    form="redirect-form">Relatorios</button>
 
-                <form id="redirect-form" class="some" action="/adm/relatorio/<%= computador.SpotPosition %>" method="GET"></form>
+                <form id="redirect-form" class="some" action="/adm/relatorio/<%= computador.SpotPosition %>"
+                    method="GET"></form>
             </div>
 
             <!-- CADASTRAR COMPONENTE -->
@@ -140,7 +147,7 @@
                     <div class="line" style="margin-top: .5em; margin-bottom: 1em;">
                         <button type="submit" value="Cadastrar" id="enviar">Editar</button>
                         <% if (edit && values.IsMainDevice) { %>
-                            <button class= <%= values.IsMainDevice == 'true' ? 'some' : '' %>
+                            <button class=<%=values.IsMainDevice=='true' ? 'some' : '' %>
                                 onclick="deleteFunction(event)" value="Cadastrar" id="excluir">Excluir</button>
                             <% } %>
                     </div>

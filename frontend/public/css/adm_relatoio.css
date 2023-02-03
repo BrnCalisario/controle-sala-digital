@@ -392,12 +392,10 @@ main {
         width: 80%;
         font-size: 25px;
     }
-
-    .fas {
+    
+    .title .fas {
         font-size: 1em !important;
     }
-
-
     
 
     .lista
