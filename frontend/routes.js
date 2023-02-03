@@ -14,8 +14,9 @@ router.get('/', homeController.getHome)
 
 // TELA DE RELATÓRIO
 router.get('/relatorio/:pos', homeController.getLog)
+router.post('/relatorio/:pos', homeController.getLog)
 router.post('/relatorio/:pos/filter', homeController.filterLog)
-router.post('/relatorio/:pos', homeController.insertLog)
+router.post('/relatorio/insert/:pos', homeController.insertLog)
 
 // TELE DE LOGIN
 router.get('/login', adminController.getLogin)

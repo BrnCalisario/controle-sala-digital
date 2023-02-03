@@ -38,7 +38,16 @@
     <div class="sala">
         <div class="frente">
             <div>
-                <img class="mesa-frente" src="../img/computadores/mesa-frente.png">
+                <div class="mesa mesa-frente">
+                <% if (posicoes.length > 0 && posicoes[20]) { %>
+                    <a href="/adm/computador/21"><img class="pc pc-frente" src="img/computadores/pc.png"></a>
+                <% } else { %>
+                    <a href="/adm/computador/cadastrar/<%= 21 %>">
+                        <i class="add-btn fas fa-plus-circle"></i>
+                    </a>
+                <% }%>
+                    <img class="mesa-frente" src="img/computadores/mesa-frente.png" alt="" />
+                </div>
             </div>
             <div class="images">
                 <a href="/adm/usuarios">

@@ -147,7 +147,10 @@ h1 {
     transform: rotate(180deg);
 }
 
-
+.mesa-frente .add-btn {
+    margin-left: 80px;
+    margin-top: 80px;
+}
 
 
 /* <!----------------------------------------------------------------------------------------------> */
@@ -199,6 +202,11 @@ h1 {
 
     .mesa-frente .pc-frente {
         margin-top: 45px;
+    }
+
+    .mesa-frente .add-btn {
+        margin-left: 50px;
+        margin-top: 48px;
     }
     
 }
