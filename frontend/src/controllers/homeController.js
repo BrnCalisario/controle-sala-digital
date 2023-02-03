@@ -27,7 +27,10 @@ class HomeController {
                     return l
                 })
 
-                return res.render('../views/relatorio', { computador: response.data.pc, logs: response.data.allLogs, filter: 'Todos' })
+                var aux = myLogs.filter(l => !l.Resolved)
+                aux.push.apply(aux, myLogs.filter(l => l.Resolved))
+
+                return res.render('../views/relatorio', { computador: response.data.pc, logs: aux, filter: 'Todos' })
             })
             .catch(error => {
                 res.render('../views/notFound')
@@ -35,6 +38,7 @@ class HomeController {
     }
 
     async getADMLog(req, res) {
+        console.log(req.body)
         await axios.get('/computer/fullStats/' + req.params.pos)
             .then(response => {
 
@@ -45,7 +49,14 @@ class HomeController {
                     return l
                 })
 
-                return res.render('../views/admRelatorio', { computador: response.data.pc, logs: response.data.allLogs, filter: 'Todos' })
+                var aux = myLogs.filter(l => !l.Resolved)
+                aux.push.apply(aux, myLogs.filter(l => l.Resolved))
+
+                if(req.body.ID && req.body.Device) {
+                    aux = aux.filter(l => l.Device === req.body.Device)
+                }
+
+                return res.render('../views/admRelatorio', { computador: response.data.pc, logs: aux, filter: 'Todos' })
             })
             .catch(error => {
                 res.render('../views/notFound')
@@ -75,9 +86,11 @@ class HomeController {
                         myLogs = myLogs.filter(l => l.Resolved)
                 }
 
+                var aux = myLogs.filter(l => !l.Resolved)
+                aux.push.apply(aux, myLogs.filter(l => l.Resolved))
 
                 console.log(req.body.filter)
-                return res.render('../views/admRelatorio', { computador: response.data.pc, logs: myLogs, filter: selectedFilter })
+                return res.render('../views/admRelatorio', { computador: response.data.pc, logs: aux, filter: selectedFilter })
             })
             .catch(error => {
                 console.log(error)
@@ -108,9 +121,12 @@ class HomeController {
                         myLogs = myLogs.filter(l => l.Resolved)
                 }
 
+                
+                var aux = myLogs.filter(l => !l.Resolved)
+                aux.push.apply(aux, myLogs.filter(l => l.Resolved))
 
                 console.log(req.body.filter)
-                return res.render('../views/relatorio', { computador: response.data.pc, logs: myLogs, filter: selectedFilter })
+                return res.render('../views/relatorio', { computador: response.data.pc, logs: aux, filter: selectedFilter })
             })
             .catch(error => {
                 console.log(error)

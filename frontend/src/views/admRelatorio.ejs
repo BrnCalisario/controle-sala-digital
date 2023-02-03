@@ -49,12 +49,10 @@
             </h3>
 
             <% for( let i=0; i < computador.devices.length; i++ ) { %>
-                <form action="/adm/editDevice/<%= computador.SpotPosition %>" onclick="this.submit()" method="POST">
+                <form action="/adm/relatorio/<%= computador.SpotPosition %>" onclick="this.submit()" method="POST">
                     <div class="item">
                         <input style="display: none;" name="ID" value="<%=computador.devices[i].ID%>">
                         <input style="display: none;" name="Device" value="<%=computador.devices[i].Name%>">
-                        <input style="display: none;" name="Brand" value="<%=computador.devices[i].Brand%>">
-                        <input style="display: none;" name="Description" value="<%=computador.devices[i].Description%>">
                         <p>
                             <%= computador.devices[i].Name %>
                         </p>
@@ -74,11 +72,11 @@
 
         <div class="right">
             <div class="buttons">
-                <button id="nao_selecionado">Componentes</button>
+                <button type="submit" form="redirect-form" id="nao_selecionado">Componentes</button>
 
-                <button id="selecionado" style="margin-left: .3em;" type="submit" form="redirect-form">Relatorios</button>
+                <button id="selecionado" style="margin-left: .3em;" >Relatorios</button>
 
-                <form id="redirect-form" class="some" action="/adm/relatorio/<%= computador.SpotPosition %>" method="GET"></form>
+                <form id="redirect-form" class="some" action="/adm/computador/<%= computador.SpotPosition %>" method="GET"></form>
             </div>
 
             <div class="tds_relatorios">
