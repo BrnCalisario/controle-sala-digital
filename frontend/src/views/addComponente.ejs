@@ -147,13 +147,13 @@
                     <div class="line" style="margin-top: .5em; margin-bottom: 1em;">
                         <button type="submit" value="Cadastrar" id="enviar">Editar</button>
                         <% if (edit && values.IsMainDevice) { %>
-                            <button class=<%=values.IsMainDevice=='true' ? 'some' : '' %>
-                                onclick="deleteFunction(event)" value="Cadastrar" id="excluir">Excluir</button>
+                            <button class="<%=values.IsMainDevice=='true' ? 'some' : '' %>"
+                                onclick="deleteFunctionDevice(event)" type="submit" value="Cadastrar" id="excluir">Excluir</button>
                             <% } %>
                     </div>
                 </form>
 
-                <form id="deleteForm" name="delete" action="/adm/removeComputer/<%=computador.SpotPosition%>"
+                <form id="deleteForm" name="delete" action="/adm/removeDevice/<%=computador.SpotPosition%>"
                     method="POST">
                     <input name="ID" class="some" value=<%=edit ? values.ID : '' %>>
                 </form>
