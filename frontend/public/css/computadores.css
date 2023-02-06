@@ -154,7 +154,7 @@ h1 {
 
 
 /* <!----------------------------------------------------------------------------------------------> */
-@media (max-width: 1400px) {
+@media (max-width: 1500px) {
     :root {
         --desk: 7em;
         --pc: calc(var(--desk) - 30px)
@@ -209,4 +209,11 @@ h1 {
         margin-top: 48px;
     }
     
+}
+
+@media (max-width: 1300px) {
+    :root {
+        --desk: 6em;
+        --pc: 5em
+    }
 }
